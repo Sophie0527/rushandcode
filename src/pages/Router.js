@@ -4,7 +4,7 @@ import Nav from '../components/Nav/Nav';
 // import Login from '../pages/Login/Login';
 // import Signup from '../pages/Signup/Signup';
 import Home from '../pages/Home/Home';
-// import Footer from '../components/Footer/Footer';
+import Footer from '../components/Footer/Footer';
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
         {/* <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} /> */}
       </Routes>
-      {/* <Footer /> */}
+      <Footer />
     </BrowserRouter>
   );
 }
