@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "alt": "코코넛",
+    "src": "https://cdn.pixabay.com/photo/2017/09/28/06/50/oil-discharge-2794477_1280.jpg"
+  },
+  {
+    "id": 2,
+    "alt": "dryflower",
+    "src": "https://cdn.pixabay.com/photo/2018/09/05/20/29/trockenblume-3657043_1280.jpg"
+  },
+  {
+    "id": 3,
+    "alt": "pink",
+    "src": "https://cdn.pixabay.com/photo/2020/04/02/05/19/beauty-4993472_1280.jpg"
+  },
+  {
+    "id": 4,
+    "alt": "green",
+    "src": "https://cdn.pixabay.com/photo/2017/05/30/19/42/cosmetic-2357981_1280.jpg"
+  },
+  {
+    "id": 5,
+    "alt": "오렌지",
+    "src": "https://cdn.pixabay.com/photo/2019/02/18/17/26/natural-cosmetics-4004908_1280.jpg"
+  }
+]
