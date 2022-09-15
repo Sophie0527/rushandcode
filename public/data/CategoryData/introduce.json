@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "category": "러쉬소개",
+    "sub_category": [
+      "러쉬역사",
+      "이념과 가치",
+      "브랜드 정책",
+      "러쉬로운 기부와 나눔",
+      "러쉬로운 자원순환"
+    ]
+  },
+  {
+    "id": 2,
+    "category": "러쉬 이야기",
+    "sub_category": []
+  },
+  {
+    "id": 3,
+    "category": "채러티 팟",
+    "sub_category": []
+  },
+  {
+    "id": 4,
+    "category": "커뮤니티",
+    "sub_category": ["젤러쉬", "덕찌"]
+  },
+  {
+    "id": 5,
+    "category": "서명캠페인",
+    "sub_category": []
+  },
+  {
+    "id": 6,
+    "category": "기업선물",
+    "sub_category": []
+  }
+]
