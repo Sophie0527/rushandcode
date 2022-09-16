@@ -3,6 +3,7 @@ import Slider from 'react-slick';
 import styled from 'styled-components';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import { CustomMediaStyle } from '../../styles/CustomMediaStyle';
 
 function MainBanner() {
   const [mainBanner, setMainBanner] = useState([]);
@@ -47,8 +48,7 @@ function MainBanner() {
 }
 
 const Container = styled.div`
-  padding-top: 120px;
-  height: 100vh;
+  padding-top: 100px;
 `;
 
 const StyledSlider = styled(Slider)`
@@ -62,12 +62,12 @@ const StyledSlider = styled(Slider)`
     outline: none;
   }
   .slick-dots {
-    position: relative;
+    padding-left: 40%;
   }
   .slick-prev {
     left: 50px;
     position: absolute;
-    z-index: 1000;
+    z-index: 90;
   }
   .slick-prev:before {
     font-size: 30px;
@@ -76,7 +76,7 @@ const StyledSlider = styled(Slider)`
   .slick-next {
     right: 60px;
     position: absolute;
-    z-index: 100;
+    z-index: 90;
   }
   .slick-next:before {
     font-size: 30px;
@@ -95,11 +95,15 @@ const Banner = styled.div`
   background-color: #d5d4da;
   width: 100%;
   img {
-    display: block;
-    margin: auto;
     height: 650px;
     width: 100%;
     object-fit: cover;
+    ${CustomMediaStyle.lessThan('desktop')`
+    height: 550px;
+    `}
+    ${CustomMediaStyle.lessThan('mobile')`
+    height: 450px;
+    `}
   }
 `;
 

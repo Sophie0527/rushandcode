@@ -1,11 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import MainBanner from '../../components/Home/MainBanner';
+import BestReview from '../../components/Home/BestReview';
 
 function Home() {
   return (
     <Container>
       <MainBanner />
+      <BestReview />
     </Container>
   );
 }
