@@ -1,19 +1,22 @@
 import React from 'react';
 import styled from 'styled-components';
+import MainBanner from '../../components/Home/MainBanner';
+import BestReview from '../../components/Home/BestReview';
+import SubBanner from '../../components/Home/SubBanner';
 
 function Home() {
   return (
     <Container>
-      <div>home</div>
+      <MainBanner />
+      <BestReview />
+      <SubBanner />
     </Container>
   );
 }
+
 const Container = styled.div`
   width: 100%;
-  height: 100vh;
-  background-color: lavender;
-  div {
-    padding-top: 100px;
-  }
+  height: 100%;
 `;
+
 export default Home;
