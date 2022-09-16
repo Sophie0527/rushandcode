@@ -30,7 +30,6 @@ function BestReview() {
     }
     setLike(tmp);
   };
-  console.log(like);
 
   const settings = {
     dots: true, // 스크롤바 아래 점으로 페이지네이션 여부
@@ -119,11 +118,8 @@ const StyledSlider = styled(Slider)`
   .slick-dots {
     position: relative;
   }
-
-  .button {
-    position: absolute;
-    z-index: 1000;
-    left: 100px;
+  .slick-next {
+    right: 0px;
   }
 `;
 

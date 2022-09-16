@@ -61,9 +61,6 @@ const StyledSlider = styled(Slider)`
   .slick-slide div {
     outline: none;
   }
-  .slick-dots {
-    padding-left: 40%;
-  }
   .slick-prev {
     left: 50px;
     position: absolute;
@@ -81,12 +78,6 @@ const StyledSlider = styled(Slider)`
   .slick-next:before {
     font-size: 30px;
     color: black;
-  }
-
-  .button {
-    position: absolute;
-    z-index: 1000;
-    left: 100px;
   }
 `;
 
