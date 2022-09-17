@@ -72,7 +72,7 @@ function BestReview() {
                     <AiOutlineShopping size="24" />
                   </div>
                 </ProductName>
-                <img src={product.img} alt={product.product_name} />
+                <img src={product.sub_img} alt={product.product_name} />
                 <ReviewText>
                   {product.reviews[0].content.length < 45 ? (
                     <>{product.reviews[0].content}</>

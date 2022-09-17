@@ -50,14 +50,14 @@ function SubBanner() {
         <h3>지금 가장 인기있는 제품을 만나보세요!</h3>
         <StyledSlider {...settings}>
           {products
-            .filter((product) => product.reviews.length > 1)
+            .filter((product) => product.reviews.length > 2)
             .map((product, idx) => {
               return (
                 <Banner key={idx}>
                   <img src={product.img} alt={product.product_name} />
                   <ProductInfo>
                     <h4>{product.product_name}</h4>
-                    <span>#기프트 #풍성한한가위 #한국단독</span>
+                    <span>{product.hashtag}</span>
                     <p>
                       ₩
                       {product.price
