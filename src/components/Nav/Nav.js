@@ -19,13 +19,14 @@ function Nav() {
       setMypageOpen(false);
     }
   };
+
   // nav '제품' 클릭 시 메뉴 박스 생성 (모달로 구현)
   const [productOpen, setProductOpen] = useState(false);
   const openProductModal = () => {
     if (productOpen === false) {
       setProductOpen(true);
       setIntroduceOpen(false);
-      setMypageOpen(false);
+      // setMypageOpen(false);
     } else {
       setProductOpen(false);
     }
@@ -37,7 +38,7 @@ function Nav() {
     if (introduceOpen === false) {
       setIntroduceOpen(true);
       setProductOpen(false);
-      setMypageOpen(false);
+      // setMypageOpen(false);
     } else {
       setIntroduceOpen(false);
     }
@@ -57,6 +58,11 @@ function Nav() {
   const navigate = useNavigate();
   return (
     <Container onClick={closeModal}>
+      <EventBox>
+        <span>
+          2022 할로윈 에디션 입고 알림 &nbsp; <p>OPEN!</p>
+        </span>
+      </EventBox>
       <NavBox>
         <LogoBox
           onClick={() => {
@@ -118,6 +124,30 @@ const Container = styled.div`
   width: 100%;
   position: fixed;
   z-index: 100;
+`;
+
+const EventBox = styled.div`
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  background-color: #ffeee0;
+  span {
+    font-size: 15px;
+    font-weight: 600;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 1px;
+    ${CustomMediaStyle.lessThan('tablet')`
+     font-size: 13px;
+     font-weight: 500;
+     height: 20px;
+    `}
+    p {
+      color: #ef7300;
+      font-weight: 700;
+    }
+  }
 `;
 
 const NavBox = styled.nav`
