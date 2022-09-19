@@ -13,7 +13,7 @@ function Contents() {
   const navigate = useNavigate();
   const success = () => {
     alert('회원가입을 축하드립니다.');
-    navigate('/');
+    navigate('/login');
   };
 
   const [signupValue, setSignupValue] = useState({
@@ -94,7 +94,7 @@ function Contents() {
         </InfoBox>
         {/*  =============  id - valid  =============  */}
         <ValidBox>
-          {invalidId && <BlackText>필수항목입니다.</BlackText>}
+          {invalidId && <RedText>필수항목입니다.</RedText>}
           {id?.length > 0 && id?.length < 4 && (
             <BlackText>최소 4 이상 입력해주세요.</BlackText>
           )}
@@ -134,7 +134,7 @@ function Contents() {
         </InfoBox>
         {/* ============= pw - valid =============  */}
         <ValidBox>
-          {invalidPw && <BlackText>필수항목입니다.</BlackText>}
+          {invalidPw && <RedText>필수항목입니다.</RedText>}
           {pw?.length > 0 && pw?.length < 7 && (
             <BlackText>최소 7 이상 입력해주세요.</BlackText>
           )}
@@ -177,7 +177,7 @@ function Contents() {
         </InfoBox>
         {/* ============= pwcheck - valid ============= */}
         <ValidBox>
-          {invalidCheckPw && <BlackText>필수항목입니다.</BlackText>}
+          {invalidCheckPw && <RedText>필수항목입니다.</RedText>}
           {checkPw?.length > 0 && pw !== checkPw && (
             <BlackText>비밀번호가 다릅니다.</BlackText>
           )}
@@ -210,7 +210,7 @@ function Contents() {
         </InfoBox>
         {/* ============= name - valid ============= */}
         <ValidBox>
-          {invalidName && <BlackText>필수항목입니다.</BlackText>}
+          {invalidName && <RedText>필수항목입니다.</RedText>}
           {name?.length >= 1 && <NoneText />}
         </ValidBox>
         <Unnecessary />
@@ -340,6 +340,11 @@ const ValidBox = styled.div`
 `;
 
 const BlackText = styled.span`
+  letter-spacing: 0.5px;
+`;
+
+const RedText = styled.span`
+  color: tomato;
   letter-spacing: 0.5px;
 `;
 
