@@ -38,6 +38,10 @@ function MainBanner() {
         {mainBanner.map((main, idx) => {
           return (
             <Banner key={idx}>
+              <div>
+                <span>{main.title}</span>
+                <p>{main.sub_title}</p>
+              </div>
               <img src={main.src} alt={main.alt} />
             </Banner>
           );
@@ -65,6 +69,9 @@ const StyledSlider = styled(Slider)`
     left: 50px;
     position: absolute;
     z-index: 90;
+    ${CustomMediaStyle.lessThan('tablet')`
+    left: 20px;
+    `}
   }
   .slick-prev:before {
     font-size: 30px;
@@ -74,6 +81,9 @@ const StyledSlider = styled(Slider)`
     right: 60px;
     position: absolute;
     z-index: 90;
+    ${CustomMediaStyle.lessThan('tablet')`
+    right: 30px;
+    `}
   }
   .slick-next:before {
     font-size: 30px;
@@ -85,6 +95,41 @@ const Banner = styled.div`
   position: relative;
   background-color: #d5d4da;
   width: 100%;
+  div {
+    position: absolute;
+    margin: 150px 100px;
+    ${CustomMediaStyle.lessThan('tablet')`
+    margin: 100px 50px;
+    `}
+    ${CustomMediaStyle.lessThan('mobile')`
+    margin: 80px 50px;
+    font-weight: 600;
+    `}
+    span {
+      font-size: 60px;
+      font-weight: 700;
+      text-shadow: -1px 0px whitesmoke, 0px 1px whitesmoke, 1px 0px whitesmoke,
+        0px -1px whitesmoke;
+      ${CustomMediaStyle.lessThan('tablet')`
+        font-size: 50px;
+        font-weight: 700;
+      `}
+      ${CustomMediaStyle.lessThan('mobile')`
+        font-size: 40px;
+        font-weight: 600;
+      `}
+    }
+    p {
+      padding-top: 20px;
+      font-size: 30px;
+      font-style: italic;
+      text-shadow: -0.5px 0px whitesmoke, 0px 0.5px whitesmoke,
+        0.5px 0px whitesmoke, 0px -0.5px whitesmoke;
+      ${CustomMediaStyle.lessThan('tablet')`
+        font-size: 20px;
+      `}
+    }
+  }
   img {
     height: 650px;
     width: 100%;
