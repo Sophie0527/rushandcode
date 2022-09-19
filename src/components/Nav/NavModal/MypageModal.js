@@ -1,16 +1,24 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { CustomMediaStyle } from '../../../styles/CustomMediaStyle';
 
 function MypageModal(props) {
   const { mypageOpen } = props;
+  const navigate = useNavigate();
   return (
     <>
       {mypageOpen ? (
         <Container>
           <ul>
             <li>로그인</li>
-            <li>회원가입</li>
+            <li
+              onClick={() => {
+                navigate('/signup');
+              }}
+            >
+              회원가입
+            </li>
             <li>커뮤니티</li>
             <li>고객센터</li>
             <li>선물함</li>

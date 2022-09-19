@@ -1,0 +1,20 @@
+.redBox {
+  border: 2px solid tomato;
+  border-radius: 1px;
+  width: 380px;
+  height: 40px;
+  margin-right: 5px;
+  @media (max-width: 46em) {
+    width: 300px;
+  }
+  input {
+    padding: 0 10px;
+    border: none;
+    width: 350px;
+    height: 40px;
+    outline: none;
+    @media (max-width: 46em) {
+      width: 280px;
+    }
+  }
+}
