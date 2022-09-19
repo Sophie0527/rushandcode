@@ -11,7 +11,13 @@ function MypageModal(props) {
       {mypageOpen ? (
         <Container>
           <ul>
-            <li>로그인</li>
+            <li
+              onClick={() => {
+                navigate('/login');
+              }}
+            >
+              로그인
+            </li>
             <li
               onClick={() => {
                 navigate('/signup');
