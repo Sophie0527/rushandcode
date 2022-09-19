@@ -180,7 +180,7 @@ const ProductName = styled.div`
       width: 17px;
       `}
       ${CustomMediaStyle.lessThan('mobile')`
-      width: 15px;
+      width: 14px;
       `}
     }
   }

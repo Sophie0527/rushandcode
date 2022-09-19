@@ -42,7 +42,7 @@ function SubBanner() {
         </div>
         <img
           alt="SubBanner"
-          src="https://cdn.pixabay.com/photo/2019/12/23/01/16/eyeliner-4713577_1280.jpg"
+          src="https://cdn.pixabay.com/photo/2018/02/01/15/53/soap-3123468_1280.jpg"
         ></img>
       </SubBannerBox>
       <BestProduct>
@@ -59,7 +59,7 @@ function SubBanner() {
                     <h4>{product.product_name}</h4>
                     <span>{product.hashtag}</span>
                     <p>
-                      ₩
+                      ₩&nbsp;
                       {product.price
                         .toString()
                         .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
@@ -93,10 +93,14 @@ const SubBannerBox = styled.div`
   `}
   img {
     width: 100%;
+    height: 450px;
+    object-fit: cover;
     vertical-align: middle;
+    ${CustomMediaStyle.lessThan('desktop')`
+    height: 400px;
+    `}
     ${CustomMediaStyle.lessThan('tablet')`
     height: 150px;
-    object-fit: cover;
     `}
   }
   div {
@@ -156,14 +160,31 @@ const BestProduct = styled.div`
 const StyledSlider = styled(Slider)`
   display: flex;
   flex-direction: column;
+  text-align: center;
   .slick-list {
     width: 100%;
   }
   .slick-slide div {
     outline: none;
   }
+  .slick-prev {
+    left: -10px;
+    z-index: 90;
+  }
+  .slick-prev:before {
+    font-size: 25px;
+    color: black;
+  }
   .slick-next {
-    right: 0px;
+    right: 5px;
+    z-index: 90;
+    ${CustomMediaStyle.lessThan('tablet')`
+    right: -20px;
+    `}
+  }
+  .slick-next:before {
+    font-size: 25px;
+    color: black;
   }
 `;
 
