@@ -1,9 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 function Login() {
   const navigate = useNavigate();
+  const gotohome = () => {
+    navigate('/');
+  };
+
+  const [loginValue, setLoginValue] = useState({
+    id: '',
+    pw: '',
+  });
+  const { id, pw } = loginValue;
+
+  // Id: 영어나 숫자로만 가능한 정규식
+  const regEmail = /^[a-z|A-Z|0-9|]+$/;
+
+  // pw: 정규식
+  const num = /[0-9]/g; // 입력한 pw에 숫자가 포함되어 있으면 0이상 숫자 전달됨.
+  const eng = /[a-z]/gi; // 입력한 pw에 영문이 포함되어 있으면 0이상 숫자 전달됨.
+  const spe = /[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi; // 입력한 pw에 특수문가거 포함되어 있으면 0이상 숫자 전달됨.
+
+  // 안전한 비밀번호인지 확인
+  // 영문 + 특수문자 또는 영문 + 특수문자 +숫자 가 들어가면 isSafe
+  const isSafe =
+    (eng.test(pw) && spe.test(pw)) ||
+    (eng.test(pw) && spe.test(pw) && num.test(pw));
+
+  const validation = (id, pw) => {
+    if (regEmail.test(id) && id?.length >= 4 && isSafe === true) {
+      return true;
+    }
+    return false;
+  };
+
+  const valid = validation(id, pw);
+
   return (
     <Container>
       <Header>
@@ -19,14 +52,28 @@ function Login() {
             src="https://img.icons8.com/external-tanah-basah-glyph-tanah-basah/344/external-user-user-tanah-basah-glyph-tanah-basah-7.png"
             alt="id"
           />
-          <input type="text" placeholder="아이디"></input>
+          <input
+            type="text"
+            placeholder="아이디"
+            value={id}
+            onChange={(e) => {
+              setLoginValue({ ...loginValue, id: e.target.value });
+            }}
+          ></input>
         </InputBox>
         <InputBox>
           <img
             src="https://img.icons8.com/material-rounded/344/lock--v1.png"
             alt="pw"
           />
-          <input type="password" placeholder="비밀번호"></input>
+          <input
+            type="password"
+            placeholder="비밀번호"
+            value={pw}
+            onChange={(e) => {
+              setLoginValue({ ...loginValue, pw: e.target.value });
+            }}
+          ></input>
         </InputBox>
       </ContentsBox>
       <SaveId>
@@ -36,7 +83,17 @@ function Login() {
         </div>
       </SaveId>
       <LoginBox>
-        <button>로그인</button>
+        <button
+          className={valid ? 'active' : 'inactive'}
+          disabled={!valid}
+          onClick={() => {
+            if (valid) {
+              gotohome();
+            }
+          }}
+        >
+          로그인
+        </button>
       </LoginBox>
       <SignupBox>
         <span
@@ -150,14 +207,17 @@ const LoginBox = styled.div`
   button {
     width: 470px;
     height: 50px;
-    color: white;
     font-size: 17px;
     font-weight: 600;
     letter-spacing: 1px;
-    background-color: black;
+    background-color: #9e9e9e;
     border: none;
     border-radius: 2px;
-    cursor: pointer;
+    &.active {
+      color: white;
+      background-color: black;
+      cursor: pointer;
+    }
   }
 `;
 
