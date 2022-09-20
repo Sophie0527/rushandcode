@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { CustomMediaStyle } from '../../styles/CustomMediaStyle';
+import { CustomMediaStyle } from '../../../styles/CustomMediaStyle';
 
 function Unnecessary() {
   return (
