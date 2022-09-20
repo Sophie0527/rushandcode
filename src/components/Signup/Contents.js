@@ -1,21 +1,14 @@
 import React, { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import Unnecessary from './Unnecessary';
+import Unnecessary from './DetailContents/Unnecessary';
 import { CustomMediaStyle } from '../../styles/CustomMediaStyle';
 import css from './Contents.module.scss';
 
-const EssentialImg =
-  'data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZpZXdCb3g9IjAgMCAxNzIgMTcyIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9Im5vbnplcm8iIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBzdHJva2UtbGluZWNhcD0iYnV0dCIgc3Ryb2tlLWxpbmVqb2luPSJtaXRlciIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBzdHJva2UtZGFzaGFycmF5PSIiIHN0cm9rZS1kYXNob2Zmc2V0PSIwIiBmb250LWZhbWlseT0ibm9uZSIgZm9udC13ZWlnaHQ9Im5vbmUiIGZvbnQtc2l6ZT0ibm9uZSIgdGV4dC1hbmNob3I9Im5vbmUiIHN0eWxlPSJtaXgtYmxlbmQtbW9kZTogbm9ybWFsIj48cGF0aCBkPSJNMCwxNzJ2LTE3MmgxNzJ2MTcyeiIgZmlsbD0ibm9uZSI+PC9wYXRoPjxnIGZpbGw9IiNmZjYzNDciPjxwYXRoIGQ9Ik0yMS41LDIxLjV2MTI5aDEyOXYtNy4xNjY2N3YtMTIxLjgzMzMzeiI+PC9wYXRoPjwvZz48L2c+PC9zdmc+';
+function Contents(props) {
+  const { EssentialImg } = props;
 
-function Contents() {
-  // 회원가입 성공시 알럿창 띄우고 이동
-  const navigate = useNavigate();
-  const success = () => {
-    alert('회원가입을 축하드립니다.');
-    navigate('/login');
-  };
-
+  // <(id, pw, checkPw, name): 입력값 변화 받아오서 바꿔줄 수 있는 useState!>
   const [signupValue, setSignupValue] = useState({
     id: '',
     pw: '',
@@ -24,25 +17,20 @@ function Contents() {
   });
   const { id, pw, checkPw, name } = signupValue;
 
-  // Id: 영어나 숫자로만 가능한 정규식
+  // <Id: 영어나 숫자로만 가능한 정규식>
   const regEmail = /^[a-z|A-Z|0-9|]+$/;
 
-  // pw: 정규식
+  // <pw: 정규식>
   const num = /[0-9]/g; // 입력한 pw에 숫자가 포함되어 있으면 0이상 숫자 전달됨.
   const eng = /[a-z]/gi; // 입력한 pw에 영문이 포함되어 있으면 0이상 숫자 전달됨.
   const spe = /[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi; // 입력한 pw에 특수문가거 포함되어 있으면 0이상 숫자 전달됨.
-
   // 안전한 비밀번호인지 확인
   // 영문 + 특수문자 또는 영문 + 특수문자 +숫자 가 들어가면 isSafe
   const isSafe =
     (eng.test(pw) && spe.test(pw)) ||
     (eng.test(pw) && spe.test(pw) && num.test(pw));
 
-  const [invalidId, setInvalidId] = useState(false);
-  const [invalidPw, setInvalidPw] = useState(false);
-  const [invalidCheckPw, setInvalidCheckPw] = useState(false);
-  const [invalidName, setInvalidName] = useState(false);
-
+  // <회원가입 클릭 시, 아래의 validation 조건에 맞다면 success()가 되도록 함.>
   const validation = (id, pw, checkPw, name) => {
     if (
       regEmail.test(id) &&
@@ -55,9 +43,22 @@ function Contents() {
     }
     return false;
   };
-
   const valid = validation(id, pw, checkPw, name);
 
+  // <회원가입 성공시 알럿창 띄우고 이동>
+  const navigate = useNavigate();
+  const success = () => {
+    alert('회원가입을 축하드립니다.');
+    navigate('/login');
+  };
+
+  // <회원가입 버튼 클릭 시, input창에 입력된게 없는 조건에 일치한다면 true로 변경하고, 다시 input창에서 이벤트가 일어날 시 false로 재변경!>
+  const [invalidId, setInvalidId] = useState(false);
+  const [invalidPw, setInvalidPw] = useState(false);
+  const [invalidCheckPw, setInvalidCheckPw] = useState(false);
+  const [invalidName, setInvalidName] = useState(false);
+
+  // <회원가입버튼 클릭 시, 해당 인풋창의 글이 한글자도 없을 시 border색상을 tomato로 바꿔주기 위해!>
   const IdBox = useRef();
   const PwBox = useRef();
   const CheckPwBox = useRef();
@@ -213,6 +214,7 @@ function Contents() {
           {invalidName && <RedText>필수항목입니다.</RedText>}
           {name?.length >= 1 && <NoneText />}
         </ValidBox>
+        {/* ============ 필수항목이 아닌 것 =============*/}
         <Unnecessary />
       </Container>
       <ContentsFooter>

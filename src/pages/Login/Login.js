@@ -3,39 +3,40 @@ import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 function Login() {
-  const navigate = useNavigate();
-  const gotohome = () => {
-    navigate('/');
-  };
-
+  // <(id, pw): 입력값 변화 받아오서 바꿔줄 수 있는 useState!>
   const [loginValue, setLoginValue] = useState({
     id: '',
     pw: '',
   });
   const { id, pw } = loginValue;
 
-  // Id: 영어나 숫자로만 가능한 정규식
+  // <Id: 영어나 숫자로만 가능한 정규식>
   const regEmail = /^[a-z|A-Z|0-9|]+$/;
 
-  // pw: 정규식
+  // <pw: 정규식>
   const num = /[0-9]/g; // 입력한 pw에 숫자가 포함되어 있으면 0이상 숫자 전달됨.
   const eng = /[a-z]/gi; // 입력한 pw에 영문이 포함되어 있으면 0이상 숫자 전달됨.
   const spe = /[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi; // 입력한 pw에 특수문가거 포함되어 있으면 0이상 숫자 전달됨.
-
   // 안전한 비밀번호인지 확인
   // 영문 + 특수문자 또는 영문 + 특수문자 +숫자 가 들어가면 isSafe
   const isSafe =
     (eng.test(pw) && spe.test(pw)) ||
     (eng.test(pw) && spe.test(pw) && num.test(pw));
 
+  // <로그인 버튼 클릭 시, 아래의 validation 조건에 맞다면 스타일을 active로 바꾸고, gotohome()가 되도록 함.>
   const validation = (id, pw) => {
     if (regEmail.test(id) && id?.length >= 4 && isSafe === true) {
       return true;
     }
     return false;
   };
-
   const valid = validation(id, pw);
+
+  // <로그인 성공 시 이동>
+  const navigate = useNavigate();
+  const gotohome = () => {
+    navigate('/');
+  };
 
   return (
     <Container>
