@@ -10,8 +10,7 @@ function Products() {
   let sch = useLocation().search;
   let query = new URLSearchParams(sch);
   let mainCategory = query.get('mainCategory');
-
-  //   let subCategory = query.get('subCategory');
+  let subCategory = query.get('subCategory');
   //   let sort = query.get('sort');
 
   //   const basicURL = `/products`;
@@ -35,7 +34,7 @@ function Products() {
       <TopBannerBox mainCategory={mainCategory} />
       <CategoryAndFilterBox>
         <CategoryAndFilter>
-          <CategoryBox mainCategory={mainCategory} />
+          <CategoryBox mainCategory={mainCategory} subCategory={subCategory} />
           <FilterContainer />
         </CategoryAndFilter>
       </CategoryAndFilterBox>

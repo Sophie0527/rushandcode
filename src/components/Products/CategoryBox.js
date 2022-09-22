@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import { CustomMediaStyle } from '../../styles/CustomMediaStyle';
 
 function CategoryBox(props) {
-  const { mainCategory } = props;
-
+  const { mainCategory, subCategory } = props;
+  console.log(subCategory);
   const [categoryData, setCategoryData] = useState([]);
   useEffect(() => {
     fetch('http://localhost:3000/data/CategoryData/products.json', {
@@ -66,7 +66,9 @@ function CategoryBox(props) {
 
   return (
     <Container>
-      <span>전체</span>
+      <Total className={subCategory === null ? 'active' : 'inactive'}>
+        전체
+      </Total>
       {mainCategory === '베스트' && (
         <>
           {best.map((best, i) => {
@@ -253,6 +255,29 @@ const Container = styled.div`
     padding-right: 8px;
    `}
   }
+`;
+
+const Total = styled.span`
+  font-size: 19px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  color: #949494;
+  padding-right: 20px;
+  cursor: pointer;
+  &.active {
+    color: black;
+  }
+  ${CustomMediaStyle.lessThan('desktop')`
+    font-size: 18px;
+    padding-right: 15px;
+   `}
+  ${CustomMediaStyle.lessThan('tablet')`
+    font-size: 16px;
+   `}
+    ${CustomMediaStyle.lessThan('mobile')`
+    font-size: 14px;
+    padding-right: 8px;
+   `}
 `;
 
 export default CategoryBox;
