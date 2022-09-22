@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { CustomMediaStyle } from '../../styles/CustomMediaStyle';
 
 function CategoryBox(props) {
   const { mainCategory, subCategory } = props;
-  console.log(subCategory);
+  const navigate = useNavigate();
+
   const [categoryData, setCategoryData] = useState([]);
   useEffect(() => {
     fetch('http://localhost:3000/data/CategoryData/products.json', {
@@ -66,166 +68,286 @@ function CategoryBox(props) {
 
   return (
     <Container>
-      <Total className={subCategory === null ? 'active' : 'inactive'}>
+      <Total
+        className={subCategory === null ? 'active' : 'inactive'}
+        onClick={() => {
+          navigate(`${'/products?mainCategory='}${mainCategory}`);
+        }}
+      >
         전체
       </Total>
       {mainCategory === '베스트' && (
         <>
-          {best.map((best, i) => {
+          {best.map((data, i) => {
             return (
-              <div key={i}>
-                {best.map((best, i) => {
-                  return <span key={i}>{best}</span>;
+              <SubTextWrap key={i}>
+                {data.map((data, i) => {
+                  return (
+                    <div key={i}>
+                      <SubText
+                        subCategory={subCategory}
+                        data={data}
+                        mainCategory={mainCategory}
+                      />
+                    </div>
+                  );
                 })}
-              </div>
+              </SubTextWrap>
             );
           })}
         </>
       )}
       {mainCategory === '신제품' && (
         <>
-          {newProduct.map((newProduct, i) => {
+          {newProduct.map((data, i) => {
             return (
-              <div key={i}>
-                {newProduct.map((newProduct, i) => {
-                  return <span key={i}>{newProduct}</span>;
+              <SubTextWrap key={i}>
+                {data.map((data, i) => {
+                  return (
+                    <div key={i}>
+                      <SubText
+                        subCategory={subCategory}
+                        data={data}
+                        mainCategory={mainCategory}
+                      />
+                    </div>
+                  );
                 })}
-              </div>
+              </SubTextWrap>
             );
           })}
         </>
       )}
       {mainCategory === '배쓰' && (
         <>
-          {bath.map((bath, i) => {
+          {bath.map((data, i) => {
             return (
-              <div key={i}>
-                {bath.map((bath, i) => {
-                  return <span key={i}>{bath}</span>;
+              <SubTextWrap key={i}>
+                {data.map((data, i) => {
+                  return (
+                    <div key={i}>
+                      <SubText
+                        subCategory={subCategory}
+                        data={data}
+                        mainCategory={mainCategory}
+                      />
+                    </div>
+                  );
                 })}
-              </div>
+              </SubTextWrap>
             );
           })}
         </>
       )}
       {mainCategory === '샤워' && (
         <>
-          {shower.map((shower, i) => {
+          {shower.map((data, i) => {
             return (
-              <div key={i}>
-                {shower.map((shower, i) => {
-                  return <span key={i}>{shower}</span>;
+              <SubTextWrap key={i}>
+                {data.map((data, i) => {
+                  return (
+                    <div key={i}>
+                      <SubText
+                        subCategory={subCategory}
+                        data={data}
+                        mainCategory={mainCategory}
+                      />
+                    </div>
+                  );
                 })}
-              </div>
+              </SubTextWrap>
             );
           })}
         </>
-      )}{' '}
+      )}
       {mainCategory === '보디' && (
         <>
-          {body.map((body, i) => {
+          {body.map((data, i) => {
             return (
-              <div key={i}>
-                {body.map((body, i) => {
-                  return <span key={i}>{body}</span>;
+              <SubTextWrap key={i}>
+                {data.map((data, i) => {
+                  return (
+                    <div key={i}>
+                      <SubText
+                        subCategory={subCategory}
+                        data={data}
+                        mainCategory={mainCategory}
+                      />
+                    </div>
+                  );
                 })}
-              </div>
+              </SubTextWrap>
             );
           })}
         </>
       )}
       {mainCategory === '페이스' && (
         <>
-          {face.map((face, i) => {
+          {face.map((data, i) => {
             return (
-              <div key={i}>
-                {face.map((face, i) => {
-                  return <span key={i}>{face}</span>;
+              <SubTextWrap key={i}>
+                {data.map((data, i) => {
+                  return (
+                    <div key={i}>
+                      <SubText
+                        subCategory={subCategory}
+                        data={data}
+                        mainCategory={mainCategory}
+                      />
+                    </div>
+                  );
                 })}
-              </div>
+              </SubTextWrap>
             );
           })}
         </>
       )}
       {mainCategory === '헤어' && (
         <>
-          {hair.map((hair, i) => {
+          {hair.map((data, i) => {
             return (
-              <div key={i}>
-                {hair.map((hair, i) => {
-                  return <span key={i}>{hair}</span>;
+              <SubTextWrap key={i}>
+                {data.map((data, i) => {
+                  return (
+                    <div key={i}>
+                      <SubText
+                        subCategory={subCategory}
+                        data={data}
+                        mainCategory={mainCategory}
+                      />
+                    </div>
+                  );
                 })}
-              </div>
+              </SubTextWrap>
             );
           })}
         </>
       )}
       {mainCategory === '메이크업' && (
         <>
-          {makeup.map((makeup, i) => {
+          {makeup.map((data, i) => {
             return (
-              <div key={i}>
-                {makeup.map((makeup, i) => {
-                  return <span key={i}>{makeup}</span>;
+              <SubTextWrap key={i}>
+                {data.map((data, i) => {
+                  return (
+                    <div key={i}>
+                      <SubText
+                        subCategory={subCategory}
+                        data={data}
+                        mainCategory={mainCategory}
+                      />
+                    </div>
+                  );
                 })}
-              </div>
+              </SubTextWrap>
             );
           })}
         </>
       )}
       {mainCategory === '퍼퓸' && (
         <>
-          {perfume.map((perfume, i) => {
+          {perfume.map((data, i) => {
             return (
-              <div key={i}>
-                {perfume.map((perfume, i) => {
-                  return <span key={i}>{perfume}</span>;
+              <SubTextWrap key={i}>
+                {data.map((data, i) => {
+                  return (
+                    <div key={i}>
+                      <SubText
+                        subCategory={subCategory}
+                        data={data}
+                        mainCategory={mainCategory}
+                      />
+                    </div>
+                  );
                 })}
-              </div>
+              </SubTextWrap>
             );
           })}
         </>
       )}
       {mainCategory === '기프트' && (
         <>
-          {gift.map((gift, i) => {
+          {gift.map((data, i) => {
             return (
-              <div key={i}>
-                {gift.map((gift, i) => {
-                  return <span key={i}>{gift}</span>;
+              <SubTextWrap key={i}>
+                {data.map((data, i) => {
+                  return (
+                    <div key={i}>
+                      <SubText
+                        subCategory={subCategory}
+                        data={data}
+                        mainCategory={mainCategory}
+                      />
+                    </div>
+                  );
                 })}
-              </div>
+              </SubTextWrap>
             );
           })}
         </>
       )}
       {mainCategory === '비건' && (
         <>
-          {vegan.map((vegan, i) => {
+          {vegan.map((data, i) => {
             return (
-              <div key={i}>
-                {vegan.map((vegan, i) => {
-                  return <span key={i}>{vegan}</span>;
+              <SubTextWrap key={i}>
+                {data.map((data, i) => {
+                  return (
+                    <div key={i}>
+                      <SubText
+                        subCategory={subCategory}
+                        data={data}
+                        mainCategory={mainCategory}
+                      />
+                    </div>
+                  );
                 })}
-              </div>
+              </SubTextWrap>
             );
           })}
         </>
       )}
       {mainCategory === '신규서비스' && (
         <>
-          {newService.map((newService, i) => {
+          {newService.map((data, i) => {
             return (
-              <div key={i}>
-                {newService.map((newService, i) => {
-                  return <span key={i}>{newService}</span>;
+              <SubTextWrap key={i}>
+                {data.map((data, i) => {
+                  return (
+                    <div key={i}>
+                      <SubText
+                        subCategory={subCategory}
+                        data={data}
+                        mainCategory={mainCategory}
+                      />
+                    </div>
+                  );
                 })}
-              </div>
+              </SubTextWrap>
             );
           })}
         </>
       )}
     </Container>
+  );
+}
+
+function SubText(props) {
+  const { data, subCategory, mainCategory } = props;
+  const navigate = useNavigate();
+
+  const mainURL = `/products?mainCategory=${mainCategory}`;
+  console.log(mainURL);
+
+  return (
+    <SubSpan
+      className={subCategory === data ? 'active' : 'inactive'}
+      onClick={() => {
+        navigate(`${mainURL}${'&subCategory='}${data}`);
+      }}
+    >
+      {data}
+    </SubSpan>
   );
 }
 
@@ -236,28 +358,36 @@ const Container = styled.div`
   width: 100%;
   justify-content: left;
   `}
-  span {
-    font-size: 19px;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    color: #949494;
-    padding-right: 20px;
-    cursor: pointer;
-    ${CustomMediaStyle.lessThan('desktop')`
+`;
+
+const Total = styled.span`
+  font-size: 19px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  color: #949494;
+  padding-right: 20px;
+  cursor: pointer;
+  &.active {
+    color: black;
+  }
+  ${CustomMediaStyle.lessThan('desktop')`
     font-size: 18px;
     padding-right: 15px;
    `}
-    ${CustomMediaStyle.lessThan('tablet')`
+  ${CustomMediaStyle.lessThan('tablet')`
     font-size: 16px;
    `}
     ${CustomMediaStyle.lessThan('mobile')`
     font-size: 14px;
     padding-right: 8px;
    `}
-  }
 `;
 
-const Total = styled.span`
+const SubTextWrap = styled.div`
+  display: flex;
+`;
+
+const SubSpan = styled.span`
   font-size: 19px;
   font-weight: 500;
   letter-spacing: 0.5px;

@@ -8,7 +8,7 @@ function ProductModal(props) {
   // product의 목데이터를 fetch하여 products 배열에 담기
   const [products, setProducts] = useState([]);
 
-  let categories = products.map((products) => products.category);
+  // let categories = products.map((products) => products.category);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -32,7 +32,7 @@ function ProductModal(props) {
                   <span
                     onClick={() => {
                       navigate(
-                        `${'/products?mainCategory='}${categories[idx]}`
+                        `${'/products?mainCategory='}${product.category}`
                       );
                     }}
                   >
@@ -42,7 +42,17 @@ function ProductModal(props) {
                 {products[idx].sub_category.map((sub_category, i) => {
                   return (
                     <li key={i}>
-                      <p>{sub_category}</p>
+                      <p
+                        onClick={() => {
+                          navigate(
+                            `${'/products?mainCategory='}${
+                              product.category
+                            }${'&subCategory='}${sub_category}`
+                          );
+                        }}
+                      >
+                        {sub_category}
+                      </p>
                     </li>
                   );
                 })}
