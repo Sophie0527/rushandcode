@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { CustomMediaStyle } from '../../../styles/CustomMediaStyle';
 
@@ -6,6 +7,9 @@ function ProductModal(props) {
   const { productOpen } = props;
   // product의 목데이터를 fetch하여 products 배열에 담기
   const [products, setProducts] = useState([]);
+
+  let categories = products.map((products) => products.category);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch('http://localhost:3000/data/CategoryData/products.json', {
@@ -25,7 +29,15 @@ function ProductModal(props) {
             return (
               <CategoryList key={idx}>
                 <li>
-                  <span>{product.category}</span>
+                  <span
+                    onClick={() => {
+                      navigate(
+                        `${'/products?mainCategory='}${categories[idx]}`
+                      );
+                    }}
+                  >
+                    {product.category}
+                  </span>
                 </li>
                 {products[idx].sub_category.map((sub_category, i) => {
                   return (
