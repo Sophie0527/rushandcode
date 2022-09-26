@@ -1,24 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { CustomMediaStyle } from '../../styles/CustomMediaStyle';
 
 function TopBannerBox(props) {
-  const { mainCategory, subCategory } = props;
-
-  const [category, setCategory] = useState([]);
-  useEffect(() => {
-    fetch('http://localhost:3000/data/CategoryData/Products.json', {
-      method: 'GET',
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setCategory(data);
-      });
-  }, [setCategory]);
+  const { categories, mainCategory, subCategory } = props;
 
   return (
     <>
-      {category
+      {categories
         .filter((category) => mainCategory === category.category)
         .map((category, idx) => {
           return (

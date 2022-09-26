@@ -16,9 +16,18 @@ function Products() {
   //   const basicURL = `/products`;
   //   const mainURL = `?mainCategory=${mainCategory}`;
   //   const mainSubURL = `?mainCategory=${mainCategory}&subCategory=${subCategory}`;
+  const [categories, setCategories] = useState([]);
+  useEffect(() => {
+    fetch('http://localhost:3000/data/CategoryData/Products.json', {
+      method: 'GET',
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setCategories(data);
+      });
+  }, [setCategories]);
 
   const [products, setProducts] = useState([]);
-
   useEffect(() => {
     fetch('http://localhost:3000/data/ProductData/Product.json', {
       method: 'GET',
@@ -28,14 +37,21 @@ function Products() {
         setProducts(data);
       });
   }, [setProducts]);
-  console.log(products);
 
   return (
     <Container>
-      <TopBannerBox mainCategory={mainCategory} subCategory={subCategory} />
+      <TopBannerBox
+        categories={categories}
+        mainCategory={mainCategory}
+        subCategory={subCategory}
+      />
       <CategoryAndFilterBox>
         <CategoryAndFilter>
-          <CategoryBox mainCategory={mainCategory} subCategory={subCategory} />
+          <CategoryBox
+            categories={categories}
+            mainCategory={mainCategory}
+            subCategory={subCategory}
+          />
           <FilterContainer />
         </CategoryAndFilter>
       </CategoryAndFilterBox>
