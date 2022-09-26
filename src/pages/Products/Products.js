@@ -5,7 +5,7 @@ import { CustomMediaStyle } from '../../styles/CustomMediaStyle';
 import TopBannerBox from '../../components/Products/TopBannerBox';
 import CategoryBox from '../../components/Products/CategoryBox';
 import FilterContainer from '../../components/Products/FilterContainer';
-
+import ProductWrap from '../../components/Products/ProductWrap';
 function Products() {
   let sch = useLocation().search;
   let query = new URLSearchParams(sch);
@@ -69,34 +69,11 @@ function Products() {
         </CategoryAndFilter>
       </CategoryAndFilterBox>
       <ProductList>
-        <ProductWrap>
-          {products
-            //   .filter((product) => product.reviews.length > 2)
-            .map((product, idx) => {
-              return (
-                <ProductBox key={idx}>
-                  <ImgBox>
-                    <img src={product.img} alt={product.product_name}></img>
-                  </ImgBox>
-                  {product.vegan === true ? (
-                    <VeganBox>
-                      <p>VEGAN</p>
-                    </VeganBox>
-                  ) : (
-                    <VeganBox></VeganBox>
-                  )}
-                  <h2>{product.product_name}</h2>
-                  <h3>{product.product_sub_name}</h3>
-                  <span>
-                    ₩&nbsp;
-                    {product.price
-                      .toString()
-                      .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                  </span>
-                </ProductBox>
-              );
-            })}
-        </ProductWrap>
+        <ProductWrap
+          products={products}
+          mainCategory={mainCategory}
+          subCategory={subCategory}
+        />
       </ProductList>
     </Container>
   );
@@ -137,95 +114,6 @@ const CategoryAndFilter = styled.div`
 const ProductList = styled.div`
   display: flex;
   justify-content: center;
-`;
-const ProductWrap = styled.div`
-  width: 90%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  padding-bottom: 100px;
-  ${CustomMediaStyle.lessThan('desktop')`
-  width: 95%;
-  `}
-  div:hover {
-    background-color: #eaeaea;
-  }
-`;
-
-const ProductBox = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  width: 315px;
-  background-color: #fafafa;
-  padding: 20px 0;
-  margin: 15px;
-  cursor: pointer;
-  ${CustomMediaStyle.lessThan('desktop')`
-  width: 260px;
-  `}
-  ${CustomMediaStyle.lessThan('tablet')`
-  width: 190px;
-  padding: 0px;
-  `}
-  h2 {
-    padding: 8px 0;
-    font-size: 28px;
-    font-weight: 600;
-    ${CustomMediaStyle.lessThan('tablet')`
-    font-size: 25px;
-    `}
-  }
-  h3 {
-    padding: 8px 0;
-    font-size: 20px;
-    font-weight: 500;
-    color: #535353;
-    ${CustomMediaStyle.lessThan('tablet')`
-    padding: 3px 0;
-    font-size: 18px;
-    `}
-  }
-  span {
-    padding: 8px 0 20px;
-    font-size: 18px;
-    color: #535353;
-    ${CustomMediaStyle.lessThan('tablet')`
-    font-size: 16px;
-    `}
-  }
-`;
-
-const ImgBox = styled.div`
-  img {
-    width: 250px;
-    ${CustomMediaStyle.lessThan('desktop')`
-    width: 200px;
-    `}
-  }
-`;
-
-const VeganBox = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 25px;
-  padding-bottom: 10px;
-  ${CustomMediaStyle.lessThan('tablet')`
-  height: 20px;
-  `}
-  p {
-    border: 2px solid green;
-    border-radius: 50px;
-    padding: 4px 12px;
-    color: green;
-    font-size: 15px;
-    font-weight: 700;
-    ${CustomMediaStyle.lessThan('tablet')`
-    font-size: 14px;
-    `}
-  }
 `;
 
 export default Products;
