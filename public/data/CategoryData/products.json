@@ -2,21 +2,29 @@
   {
     "id": 1,
     "category": "베스트",
+    "category_meaning": "누구나 좋아하는 인기 제품을 만나 보세요!",
+    "img": "https://cdn.pixabay.com/photo/2018/01/30/16/54/herbs-3119132_1280.jpg",
     "sub_category": ["BEST 50", "국내제조", "네이키드"]
   },
   {
     "id": 2,
     "category": "신제품",
+    "category_meaning": "따끈 따끈한 신제품을 가장 먼저 만나 보세요!",
+    "img": "https://cdn.pixabay.com/photo/2019/06/30/10/02/soap-4307709_1280.jpg",
     "sub_category": ["기프트", "배쓰 밤"]
   },
   {
     "id": 3,
     "category": "배쓰",
+    "category_meaning": "당신에게 향기로운 입욕을 선물합니다",
+    "img": "https://cdn.pixabay.com/photo/2015/12/21/10/40/balls-1102471_1280.jpg",
     "sub_category": ["배쓰 밤", "버블 바", "배쓰 오일", "펀"]
   },
   {
     "id": 4,
     "category": "샤워",
+    "category_meaning": "일렁이는 향기와 함께 피부를 건간하게 지켜주세요",
+    "img": "https://cdn.pixabay.com/photo/2016/08/25/18/09/badesalz-1620261_1280.jpg",
     "sub_category": [
       "솝",
       "샤워 젤/젤리",
@@ -29,6 +37,8 @@
   {
     "id": 5,
     "category": "보디",
+    "category_meaning": "늘 당신의 피부를 향긋하고 건강하세 빛내줄 거예요",
+    "img": "https://cdn.pixabay.com/photo/2015/08/01/21/13/hygiene-870763_1280.jpg",
     "sub_category": [
       "클렌저",
       "로션",
@@ -41,6 +51,8 @@
   {
     "id": 6,
     "category": "페이스",
+    "category_meaning": "신선한 재료로 만들어 믿을 수 있는 제품이에요",
+    "img": "https://cdn.pixabay.com/photo/2017/09/06/20/04/mouth-2722799_1280.jpg",
     "sub_category": [
       "클렌저",
       "페이스 마스크",
@@ -53,6 +65,8 @@
   {
     "id": 7,
     "category": "헤어",
+    "category_meaning": "실리콘 성분 없이 건강한 재료만 담아 매일 더 싱그럽게",
+    "img": "https://cdn.pixabay.com/photo/2018/04/03/23/04/woman-3288365_1280.jpg",
     "sub_category": [
       "샴푸 바",
       "샴푸",
@@ -65,6 +79,8 @@
   {
     "id": 8,
     "category": "메이크업",
+    "category_meaning": "다른 누구도 아닌, 가장 나다운 느낌을 표현해 보세요",
+    "img": "https://cdn.pixabay.com/photo/2016/10/25/12/53/makeup-brush-1768790_1280.jpg",
     "sub_category": [
       "페이스 파우더",
       "아이 메이크업",
@@ -77,6 +93,8 @@
   {
     "id": 9,
     "category": "퍼퓸",
+    "category_meaning": "자연과 음악, 사가 주는 영감으로 빚어낸 특별한 향기",
+    "img": "https://cdn.pixabay.com/photo/2018/05/13/18/06/scent-of-roses-3397281_1280.jpg",
     "sub_category": [
       "보디스프레이",
       "퍼퓸 라이브러리",
@@ -89,6 +107,8 @@
   {
     "id": 10,
     "category": "기프트",
+    "category_meaning": "환경을 배려한 선물의 감동은 긴 여운을 남길 거예요",
+    "img": "https://cdn.pixabay.com/photo/2016/09/12/20/58/soap-1665757_1280.jpg",
     "sub_category": [
       "기프트 베스트",
       "1-3만원대",
@@ -103,6 +123,8 @@
   {
     "id": 11,
     "category": "비건",
+    "category_meaning": "환경과 고객 모두를 위한 제품",
+    "img": "https://cdn.pixabay.com/photo/2020/08/09/15/58/cosmetics-5475897_1280.jpg",
     "sub_category": [
       "배쓰",
       "샤워",
@@ -116,6 +138,8 @@
   {
     "id": 12,
     "category": "신규서비스",
+    "category_meaning": "준비중이에요! 우리곧 만나요:",
+    "img": "https://cdn.pixabay.com/photo/2021/03/30/07/39/dried-petals-6136167_1280.jpg",
     "sub_category": ["선물하기"]
   }
 ]
