@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { CustomMediaStyle } from '../../styles/CustomMediaStyle';
 
-function FilterContainer() {
+function FilterContainer(props) {
+  const { navigate, basicURL, mainSubURL, sort } = props;
   const [filterOpen, setFilterOpen] = useState(false);
 
   const openFilterBox = () => {
@@ -12,22 +13,59 @@ function FilterContainer() {
       setFilterOpen(false);
     }
   };
+
+  const closeFilterBox = () => {
+    if (filterOpen) {
+      setFilterOpen(false);
+    }
+  };
+
   return (
     <Container>
       <FilterBox onClick={openFilterBox}>
-        <span>추천순</span>
+        <span>{sort}</span>
         <img
           src="https://img.icons8.com/ios-filled/344/expand-arrow.png"
           alt="아래화실표"
         ></img>
       </FilterBox>
       {filterOpen ? (
-        <Filter>
-          <span>추천순</span>
-          <span>인기순</span>
-          <span>낮은 가격순</span>
-          <span>높은 가격순</span>
-          <span>리뷰많은 순</span>
+        <Filter onClick={closeFilterBox}>
+          <span
+            onClick={() => {
+              navigate(`${basicURL}${mainSubURL}${'&sort=추천순'}`);
+            }}
+          >
+            추천순
+          </span>
+          <span
+            onClick={() => {
+              navigate(`${basicURL}${mainSubURL}${'&sort=인기순'}`);
+            }}
+          >
+            인기순
+          </span>
+          <span
+            onClick={() => {
+              navigate(`${basicURL}${mainSubURL}${'&sort=낮은 가격순'}`);
+            }}
+          >
+            낮은 가격순
+          </span>
+          <span
+            onClick={() => {
+              navigate(`${basicURL}${mainSubURL}${'&sort=높은 가격순'}`);
+            }}
+          >
+            높은 가격순
+          </span>
+          <span
+            onClick={() => {
+              navigate(`${basicURL}${mainSubURL}${'&sort=리뷰많은 순'}`);
+            }}
+          >
+            리뷰많은 순
+          </span>
         </Filter>
       ) : null}
     </Container>

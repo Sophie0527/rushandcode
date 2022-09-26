@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { CustomMediaStyle } from '../../styles/CustomMediaStyle';
 import TopBannerBox from '../../components/Products/TopBannerBox';
@@ -11,11 +11,15 @@ function Products() {
   let query = new URLSearchParams(sch);
   let mainCategory = query.get('mainCategory');
   let subCategory = query.get('subCategory');
-  //   let sort = query.get('sort');
+  let sort = query.get('sort');
 
-  //   const basicURL = `/products`;
-  //   const mainURL = `?mainCategory=${mainCategory}`;
-  //   const mainSubURL = `?mainCategory=${mainCategory}&subCategory=${subCategory}`;
+  const navigate = useNavigate();
+
+  const basicURL = `/products`;
+  const mainURL = `?mainCategory=${mainCategory}`;
+  const mainSubURL = `?mainCategory=${mainCategory}&subCategory=${subCategory}`;
+  const sortURL = `&sort=${sort}`;
+
   const [categories, setCategories] = useState([]);
   useEffect(() => {
     fetch('http://localhost:3000/data/CategoryData/Products.json', {
@@ -48,11 +52,20 @@ function Products() {
       <CategoryAndFilterBox>
         <CategoryAndFilter>
           <CategoryBox
+            navigate={navigate}
             categories={categories}
             mainCategory={mainCategory}
             subCategory={subCategory}
+            basicURL={basicURL}
+            mainURL={mainURL}
+            sortURL={sortURL}
           />
-          <FilterContainer />
+          <FilterContainer
+            navigate={navigate}
+            basicURL={basicURL}
+            mainSubURL={mainSubURL}
+            sort={sort}
+          />
         </CategoryAndFilter>
       </CategoryAndFilterBox>
       <ProductList>
