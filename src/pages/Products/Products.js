@@ -28,10 +28,11 @@ function Products() {
         setProducts(data);
       });
   }, [setProducts]);
+  console.log(products);
 
   return (
     <Container>
-      <TopBannerBox mainCategory={mainCategory} />
+      <TopBannerBox mainCategory={mainCategory} subCategory={subCategory} />
       <CategoryAndFilterBox>
         <CategoryAndFilter>
           <CategoryBox mainCategory={mainCategory} subCategory={subCategory} />
