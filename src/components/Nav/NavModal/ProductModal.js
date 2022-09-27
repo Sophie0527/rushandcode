@@ -32,7 +32,9 @@ function ProductModal(props) {
                   <span
                     onClick={() => {
                       navigate(
-                        `${'/products?mainCategory='}${product.category}`
+                        `${'/products?mainCategory='}${
+                          product.category
+                        }${'&sort=추천순'}`
                       );
                     }}
                   >
@@ -47,7 +49,7 @@ function ProductModal(props) {
                           navigate(
                             `${'/products?mainCategory='}${
                               product.category
-                            }${'&subCategory='}${sub_category}`
+                            }${'&subCategory='}${sub_category}${'&sort=추천순'}`
                           );
                         }}
                       >

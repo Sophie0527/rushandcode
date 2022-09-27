@@ -1,24 +1,28 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { CustomMediaStyle } from '../../styles/CustomMediaStyle';
 
 function CategoryBox(props) {
-  const { categories, mainCategory, subCategory } = props;
+  const {
+    navigate,
+    categories,
+    mainCategory,
+    subCategory,
+    basicURL,
+    mainURL,
+    sortURL,
+  } = props;
 
   const subCategoryList = categories
     .filter((categories) => categories.category === mainCategory)
     .map((categories) => categories.sub_category);
-
-  const navigate = useNavigate();
-  const mainURL = `/products?mainCategory=${mainCategory}`;
 
   return (
     <Container>
       <Total
         className={subCategory === null ? 'active' : 'inactive'}
         onClick={() => {
-          navigate(`${mainURL}`);
+          navigate(`${basicURL}${mainURL}${sortURL}`);
         }}
       >
         전체
@@ -32,7 +36,9 @@ function CategoryBox(props) {
                   key={i}
                   className={subCategory === category ? 'active' : 'inactive'}
                   onClick={() => {
-                    navigate(`${mainURL}${'&subCategory='}${category}`);
+                    navigate(
+                      `${basicURL}${mainURL}${'&subCategory='}${category}${sortURL}`
+                    );
                   }}
                 >
                   {category}
