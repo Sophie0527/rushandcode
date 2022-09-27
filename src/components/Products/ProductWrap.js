@@ -50,9 +50,10 @@ function ProductWrap(props) {
 
   // 메인vegan제품에 따른 필터링
   const mainVeganList = products.filter((products) => products.vegan === true);
-  // 서브제품에 따른 필터링
+  // 서브vegan제품에 따른 필터링
   const subVeganList = products.filter(
-    (products) => products.product_main_name === subCategory
+    (products) =>
+      products.product_main_name === subCategory && products.vegan === true
   );
   const veganList = subCategory === null ? mainVeganList : subVeganList;
   if (sort === '추천순') {
