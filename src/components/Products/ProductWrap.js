@@ -14,7 +14,9 @@ function ProductWrap(props) {
     (products) => products.product_sub_name === subCategory
   );
   const productList = subCategory === null ? mainProductList : subProductList;
-  if (sort === '낮은 가격순') {
+  if (sort === '추천순') {
+    productList.sort(() => Math.random() - 0.5);
+  } else if (sort === '낮은 가격순') {
     productList.sort((a, b) => {
       return a.price - b.price;
     });
@@ -30,7 +32,9 @@ function ProductWrap(props) {
 
   // best제품에 따른 필터링
   const bestList = products.filter((products) => products.reviews.length > 2);
-  if (sort === '낮은 가격순') {
+  if (sort === '추천순') {
+    bestList.sort(() => Math.random() - 0.5);
+  } else if (sort === '낮은 가격순') {
     bestList.sort((a, b) => {
       return a.price - b.price;
     });
@@ -46,12 +50,15 @@ function ProductWrap(props) {
 
   // 메인vegan제품에 따른 필터링
   const mainVeganList = products.filter((products) => products.vegan === true);
-  // 서브제품에 따른 필터링
+  // 서브vegan제품에 따른 필터링
   const subVeganList = products.filter(
-    (products) => products.product_main_name === subCategory
+    (products) =>
+      products.product_main_name === subCategory && products.vegan === true
   );
   const veganList = subCategory === null ? mainVeganList : subVeganList;
-  if (sort === '낮은 가격순') {
+  if (sort === '추천순') {
+    veganList.sort(() => Math.random() - 0.5);
+  } else if (sort === '낮은 가격순') {
     veganList.sort((a, b) => {
       return a.price - b.price;
     });
