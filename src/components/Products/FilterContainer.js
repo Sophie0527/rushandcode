@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { CustomMediaStyle } from '../../styles/CustomMediaStyle';
 
 function FilterContainer(props) {
-  const { navigate, basicURL, mainSubURL, sort } = props;
+  const { navigate, subCategory, basicURL, mainURL, mainSubURL, sort } = props;
   const [filterOpen, setFilterOpen] = useState(false);
 
   const openFilterBox = () => {
@@ -31,41 +31,70 @@ function FilterContainer(props) {
       </FilterBox>
       {filterOpen ? (
         <Filter onClick={closeFilterBox}>
-          <span
-            onClick={() => {
-              navigate(`${basicURL}${mainSubURL}${'&sort=추천순'}`);
-            }}
-          >
-            추천순
-          </span>
-          <span
-            onClick={() => {
-              navigate(`${basicURL}${mainSubURL}${'&sort=인기순'}`);
-            }}
-          >
-            인기순
-          </span>
-          <span
-            onClick={() => {
-              navigate(`${basicURL}${mainSubURL}${'&sort=낮은 가격순'}`);
-            }}
-          >
-            낮은 가격순
-          </span>
-          <span
-            onClick={() => {
-              navigate(`${basicURL}${mainSubURL}${'&sort=높은 가격순'}`);
-            }}
-          >
-            높은 가격순
-          </span>
-          <span
-            onClick={() => {
-              navigate(`${basicURL}${mainSubURL}${'&sort=리뷰많은 순'}`);
-            }}
-          >
-            리뷰많은 순
-          </span>
+          {subCategory === null && (
+            <>
+              <span
+                onClick={() => {
+                  navigate(`${basicURL}${mainURL}${'&sort=추천순'}`);
+                }}
+              >
+                추천순
+              </span>
+              <span
+                onClick={() => {
+                  navigate(`${basicURL}${mainURL}${'&sort=낮은 가격순'}`);
+                }}
+              >
+                낮은 가격순
+              </span>
+              <span
+                onClick={() => {
+                  navigate(`${basicURL}${mainURL}${'&sort=높은 가격순'}`);
+                }}
+              >
+                높은 가격순
+              </span>
+              <span
+                onClick={() => {
+                  navigate(`${basicURL}${mainURL}${'&sort=리뷰많은 순'}`);
+                }}
+              >
+                리뷰많은 순
+              </span>
+            </>
+          )}
+          {subCategory && (
+            <>
+              <span
+                onClick={() => {
+                  navigate(`${basicURL}${mainSubURL}${'&sort=추천순'}`);
+                }}
+              >
+                추천순
+              </span>
+              <span
+                onClick={() => {
+                  navigate(`${basicURL}${mainSubURL}${'&sort=낮은 가격순'}`);
+                }}
+              >
+                낮은 가격순
+              </span>
+              <span
+                onClick={() => {
+                  navigate(`${basicURL}${mainSubURL}${'&sort=높은 가격순'}`);
+                }}
+              >
+                높은 가격순
+              </span>
+              <span
+                onClick={() => {
+                  navigate(`${basicURL}${mainSubURL}${'&sort=리뷰많은 순'}`);
+                }}
+              >
+                리뷰많은 순
+              </span>
+            </>
+          )}
         </Filter>
       ) : null}
     </Container>

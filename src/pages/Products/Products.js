@@ -62,7 +62,9 @@ function Products() {
           />
           <FilterContainer
             navigate={navigate}
+            subCategory={subCategory}
             basicURL={basicURL}
+            mainURL={mainURL}
             mainSubURL={mainSubURL}
             sort={sort}
           />
@@ -73,6 +75,7 @@ function Products() {
           products={products}
           mainCategory={mainCategory}
           subCategory={subCategory}
+          sort={sort}
         />
       </ProductList>
     </Container>

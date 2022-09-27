@@ -3,36 +3,67 @@ import styled from 'styled-components';
 import { CustomMediaStyle } from '../../styles/CustomMediaStyle';
 
 function ProductWrap(props) {
-  const { products, mainCategory, subCategory } = props;
+  const { products, mainCategory, subCategory, sort } = props;
 
   // 메인제품에 따른 필터링
   const mainProductList = products.filter(
     (products) => products.product_main_name === mainCategory
   );
-
   // 서브제품에 따른 필터링
   const subProductList = products.filter(
     (products) => products.product_sub_name === subCategory
   );
-
   const productList = subCategory === null ? mainProductList : subProductList;
+  if (sort === '낮은 가격순') {
+    productList.sort((a, b) => {
+      return a.price - b.price;
+    });
+  } else if (sort === '높은 가격순') {
+    productList.sort((a, b) => {
+      return b.price - a.price;
+    });
+  } else if (sort === '리뷰많은 순') {
+    productList.sort((a, b) => {
+      return b.reviews.length - a.reviews.length;
+    });
+  }
 
   // best제품에 따른 필터링
   const bestList = products.filter((products) => products.reviews.length > 2);
+  if (sort === '낮은 가격순') {
+    bestList.sort((a, b) => {
+      return a.price - b.price;
+    });
+  } else if (sort === '높은 가격순') {
+    bestList.sort((a, b) => {
+      return b.price - a.price;
+    });
+  } else if (sort === '리뷰많은 순') {
+    bestList.sort((a, b) => {
+      return b.reviews.length - a.reviews.length;
+    });
+  }
 
   // 메인vegan제품에 따른 필터링
   const mainVeganList = products.filter((products) => products.vegan === true);
-
-  const veganList = mainCategory === '비건' ? mainVeganList : null;
-
-  //   console.log(veganList);
-
-  //   const subVeganList =
-  //     mainCategory === '비건' && subCategory === subCategory
-  //       ? mainVeganList.filter(
-  //           (mainVeganList) => mainVeganList.product_main_name === subCategory
-  //         )
-  //       : null;
+  // 서브제품에 따른 필터링
+  const subVeganList = products.filter(
+    (products) => products.product_main_name === subCategory
+  );
+  const veganList = subCategory === null ? mainVeganList : subVeganList;
+  if (sort === '낮은 가격순') {
+    veganList.sort((a, b) => {
+      return a.price - b.price;
+    });
+  } else if (sort === '높은 가격순') {
+    veganList.sort((a, b) => {
+      return b.price - a.price;
+    });
+  } else if (sort === '리뷰많은 순') {
+    veganList.sort((a, b) => {
+      return b.reviews.length - a.reviews.length;
+    });
+  }
 
   return (
     <Container>
