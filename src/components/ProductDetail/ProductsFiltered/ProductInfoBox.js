@@ -60,6 +60,18 @@ const InfoBox = styled.div`
     width: 1000px;
     height: 700px;
     object-fit: cover;
+    ${CustomMediaStyle.lessThan('desktop')`
+    width: 800px;
+    height: 500px;
+    `}
+    ${CustomMediaStyle.lessThan('tablet')`
+    width: 600px;
+    height: 400px;
+    `}
+    ${CustomMediaStyle.lessThan('mobile')`
+    width: 500px;
+    height: 400px;
+    `}
   }
 `;
 
