@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { CustomMediaStyle } from '../../styles/CustomMediaStyle';
 
@@ -77,22 +78,24 @@ function ProductWrap(props) {
       {productList.map((product, idx) => {
         return (
           <ProductBox key={idx}>
-            <ImgBox>
-              <img src={product.img} alt={product.product_name}></img>
-            </ImgBox>
-            {product.vegan === true ? (
-              <VeganBox>
-                <p>VEGAN</p>
-              </VeganBox>
-            ) : (
-              <VeganBox></VeganBox>
-            )}
-            <h2>{product.product_name}</h2>
-            <h3>{product.product_sub_name}</h3>
-            <span>
-              ₩&nbsp;
-              {product.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-            </span>
+            <Link to={`/productDetail/${product.id}`}>
+              <ImgBox>
+                <img src={product.img} alt={product.product_name}></img>
+              </ImgBox>
+              {product.vegan === true ? (
+                <VeganBox>
+                  <p>VEGAN</p>
+                </VeganBox>
+              ) : (
+                <VeganBox></VeganBox>
+              )}
+              <h2>{product.product_name}</h2>
+              <h3>{product.product_sub_name}</h3>
+              <span>
+                ₩&nbsp;
+                {product.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+              </span>
+            </Link>
           </ProductBox>
         );
       })}
@@ -101,24 +104,26 @@ function ProductWrap(props) {
           {bestList.map((product, idx) => {
             return (
               <ProductBox key={idx}>
-                <ImgBox>
-                  <img src={product.img} alt={product.product_name}></img>
-                </ImgBox>
-                {product.vegan === true ? (
-                  <VeganBox>
-                    <p>VEGAN</p>
-                  </VeganBox>
-                ) : (
-                  <VeganBox></VeganBox>
-                )}
-                <h2>{product.product_name}</h2>
-                <h3>{product.product_sub_name}</h3>
-                <span>
-                  ₩&nbsp;
-                  {product.price
-                    .toString()
-                    .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                </span>
+                <Link to={`/productDetail/${product.id}`}>
+                  <ImgBox>
+                    <img src={product.img} alt={product.product_name}></img>
+                  </ImgBox>
+                  {product.vegan === true ? (
+                    <VeganBox>
+                      <p>VEGAN</p>
+                    </VeganBox>
+                  ) : (
+                    <VeganBox></VeganBox>
+                  )}
+                  <h2>{product.product_name}</h2>
+                  <h3>{product.product_sub_name}</h3>
+                  <span>
+                    ₩&nbsp;
+                    {product.price
+                      .toString()
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                  </span>
+                </Link>
               </ProductBox>
             );
           })}
@@ -129,24 +134,26 @@ function ProductWrap(props) {
           {veganList.map((product, idx) => {
             return (
               <ProductBox key={idx}>
-                <ImgBox>
-                  <img src={product.img} alt={product.product_name}></img>
-                </ImgBox>
-                {product.vegan === true ? (
-                  <VeganBox>
-                    <p>VEGAN</p>
-                  </VeganBox>
-                ) : (
-                  <VeganBox></VeganBox>
-                )}
-                <h2>{product.product_name}</h2>
-                <h3>{product.product_sub_name}</h3>
-                <span>
-                  ₩&nbsp;
-                  {product.price
-                    .toString()
-                    .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                </span>
+                <Link to={`/productDetail/${product.id}`}>
+                  <ImgBox>
+                    <img src={product.img} alt={product.product_name}></img>
+                  </ImgBox>
+                  {product.vegan === true ? (
+                    <VeganBox>
+                      <p>VEGAN</p>
+                    </VeganBox>
+                  ) : (
+                    <VeganBox></VeganBox>
+                  )}
+                  <h2>{product.product_name}</h2>
+                  <h3>{product.product_sub_name}</h3>
+                  <span>
+                    ₩&nbsp;
+                    {product.price
+                      .toString()
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                  </span>
+                </Link>
               </ProductBox>
             );
           })}
@@ -187,13 +194,17 @@ const ProductBox = styled.div`
   width: 190px;
   padding: 0px;
   `}
+  a {
+    text-decoration: none;
+  }
   h2 {
     padding: 8px 0;
     font-size: 28px;
     font-weight: 600;
+    color: black;
     ${CustomMediaStyle.lessThan('tablet')`
     font-size: 25px;
-    `}
+    `};
   }
   h3 {
     padding: 8px 0;
