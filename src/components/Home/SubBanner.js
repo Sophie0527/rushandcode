@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
 import styled from 'styled-components';
 import 'slick-carousel/slick/slick.css';
@@ -53,19 +54,21 @@ function SubBanner() {
             .filter((product) => product.reviews.length > 2)
             .map((product, idx) => {
               return (
-                <Banner key={idx}>
-                  <img src={product.img} alt={product.product_name} />
-                  <ProductInfo>
-                    <h4>{product.product_name}</h4>
-                    <span>{product.hashtag}</span>
-                    <p>
-                      ₩&nbsp;
-                      {product.price
-                        .toString()
-                        .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                    </p>
-                  </ProductInfo>
-                </Banner>
+                <Link to={`/productDetail/${product.id}`}>
+                  <Banner key={idx}>
+                    <img src={product.img} alt={product.product_name} />
+                    <ProductInfo>
+                      <h4>{product.product_name}</h4>
+                      <span>{product.hashtag}</span>
+                      <p>
+                        ₩&nbsp;
+                        {product.price
+                          .toString()
+                          .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                      </p>
+                    </ProductInfo>
+                  </Banner>
+                </Link>
               );
             })}
         </StyledSlider>
@@ -186,6 +189,9 @@ const StyledSlider = styled(Slider)`
     font-size: 25px;
     color: black;
   }
+  a {
+    text-decoration: none;
+  }
 `;
 
 const Banner = styled.div`
@@ -202,6 +208,7 @@ const ProductInfo = styled.div`
   display: flex;
   flex-direction: column;
   h4 {
+    color: black;
     font-size: 20px;
     font-weight: 800;
     margin-top: -15px;
