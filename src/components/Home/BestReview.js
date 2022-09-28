@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
 import styled from 'styled-components';
 import 'slick-carousel/slick/slick.css';
@@ -72,7 +73,9 @@ function BestReview() {
                     <AiOutlineShopping size="24" />
                   </div>
                 </ProductName>
-                <img src={product.sub_img} alt={product.product_name} />
+                <Link to={`/productDetail/${product.id}`}>
+                  <img src={product.sub_img} alt={product.product_name} />
+                </Link>
                 <ReviewText>
                   {product.reviews[0].content.length < 45 ? (
                     <>{product.reviews[0].content}</>
