@@ -79,7 +79,6 @@ function ProductFilterBox(props) {
       {info ? <ProductInfoBox product={product} /> : null}
       {review ? <ProductReviewBox product={product} /> : null}
       {shipping ? <ProductshippingBox /> : null}
-
       {essentialInfo ? <ProductEssentialInfoBox /> : null}
     </>
   );
