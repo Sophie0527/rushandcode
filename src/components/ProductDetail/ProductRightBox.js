@@ -19,6 +19,7 @@ function ProductRightBox(props) {
                 setInfo(false);
                 setShipping(false);
                 setEssentialInfo(false);
+                window.scrollBy(0, 700);
               }}
             >
               {product.reviews.length}개의 후기 보기
