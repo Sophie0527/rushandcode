@@ -79,10 +79,40 @@
     - 실제 lush 홈 페이지 참고하여 디자인  
   
   #### 2) MainBanner
+  <img width="600" alt="메인베너" src="https://user-images.githubusercontent.com/100933263/193050173-6c0cc3f7-0035-4662-83bd-4e24b0055ca1.png" >
+
     - 메인베너 정보 Mock data 만들고, fetch하여 data를 setState로 배열에 담기.
     - React-Slick 라이브러리를 사용하여 Carousel 구현.
   
   #### 3) BestReviewBanner
+  <img width="600" alt="베스트 리뷰 베너" src="https://user-images.githubusercontent.com/100933263/193051027-188ea2a8-47b2-4b6f-9d88-47fc3eeed1ab.png">
+
     - 상품 정보가 있는 Mock data를, fetch하여 data를 setState로 배열에 담기.
     - React-Slick 라이브러리를 사용하여 Carousel 구현.
-    - 상품리뷰의 별이 ★★★★★인 
+    - 상품리뷰의 별이 ★★★★★인 상품으로 필터링하고, 필터링된 상품을 mapping하여 보여주기.
+
+  #### 4) BestReviewBanner의 상품 별 좋아요 버튼 구현
+  <img width="300" src="https://user-images.githubusercontent.com/100933263/193052364-5bb9338f-c3c8-4d04-9002-7bc1ee6fd276.png" />  
+  
+    - like의 state를 false로 하고 onClick 이벤트 시(♡ 아이콘 클릭), setState로 반대 값으로 바꿔주기.
+    - state가 바뀌면 색상과 아이콘 이미지 변경 (false:검정색 빈하트 -> true: 빨강색 꽉찬하트)
+
+  #### 5) BestReviewBanner의 상품 별 구매자 이름
+  <img width="57" alt="이름" src="https://user-images.githubusercontent.com/100933263/193056009-85636c95-531c-4a8a-a1a6-e098e078b2e2.png">
+
+    - 정규식을 사용을 사용하여 이름의 중간 글자를 *로 변경하여 보여주기.   
+      ```.replace(/(?<=.{1})./, '*');```  
+        
+  #### 6) BestProductBanner
+  <img width="500" alt="베스트 상품 베너" src="https://user-images.githubusercontent.com/100933263/193055475-35ebbf80-84af-436c-93cc-a24a402629cb.png">
+
+    - 상품 정보가 있는 Mock data를, fetch하여 data를 setState로 배열에 담기.
+    - React-Slick 라이브러리를 사용하여 Carousel 구현.
+    - 상품리뷰의 갯수가 2개 이상인 상품으로 필터링하고, 필터링된 상품을 mapping하여 보여주기.
+
+  #### 7) BestProductBanner 상품 별 가격
+  <img width="97" alt="가격" src="https://user-images.githubusercontent.com/100933263/193056265-697a7031-ff30-47e3-9cef-30d9a99ed884.png">
+
+    - 정규식을 사용을 사용하여 가격의 천단위 콤마 추가하여 보여주기.   
+      ```.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')```  
+  
