@@ -14,6 +14,7 @@
     - 4 . product list Page
     - 5 . product detail Page
     - 6 . nav component
+    - 7 . 반응형 구현
     
   ## 1. Signup Page
   ![회원가입](https://user-images.githubusercontent.com/100933263/193027929-aeb4593a-4576-4ebb-ad32-d26cba36bb73.gif)
@@ -80,13 +81,13 @@
     - 실제 lush 홈 페이지 참고하여 디자인  
   
   #### 2) MainBanner
-  <img width="600" alt="메인베너" src="https://user-images.githubusercontent.com/100933263/193050173-6c0cc3f7-0035-4662-83bd-4e24b0055ca1.png" >
+  <img width="500" alt="메인베너" src="https://user-images.githubusercontent.com/100933263/193050173-6c0cc3f7-0035-4662-83bd-4e24b0055ca1.png" >
 
     - 메인베너 정보 Mock data 만들고, fetch하여 data를 setState로 배열에 담기.
     - React-Slick 라이브러리를 사용하여 Carousel 구현.
   
   #### 3) BestReviewBanner
-  <img width="600" alt="베스트 리뷰 베너" src="https://user-images.githubusercontent.com/100933263/193051027-188ea2a8-47b2-4b6f-9d88-47fc3eeed1ab.png">
+  <img width="500" alt="베스트 리뷰 베너" src="https://user-images.githubusercontent.com/100933263/193051027-188ea2a8-47b2-4b6f-9d88-47fc3eeed1ab.png">
 
     - 상품 정보가 있는 Mock data를, fetch하여 data를 setState로 배열에 담기.
     - React-Slick 라이브러리를 사용하여 Carousel 구현.
@@ -120,14 +121,54 @@
     <br />
     
   ## 4. product list Page
-      
+  
     <br />
     
   ## 5. product detail Page
+  ![상품 디테일](https://user-images.githubusercontent.com/100933263/193070179-aef35950-40fa-48e1-b4e2-2e703cf199de.gif)
+
+  #### 1) 상품 리스트 페이지 레이아웃
+    - 실제 lush nav 상품 리스트 페이지를 참고하여 디자인  
+    
+  #### 2) 해당하는 상품으로 보여주기 
+    - 상품 정보가 있는 Mock data를, fetch하여 data를 setState로 배열에 담기.
+    - useLocation().pathname으로 url의 정보를 가져와서 split를 사용하여 /(슬래시)를 기준으로 뒤의 정보 가져오기.
+    - 상품 아이디가 '/' 뒤의 숫자와 같은 것으로 필터링하고, 필터링된 상품을 mapping하여 보여주기.
+    
+  #### 3) 상품 리스트 왼쪽의 상품이미지
+    - 서브이미지 클릭 시 메인 이미지가 해당 이미지로 바뀌도록 구현.
+  
+  #### 4) 상품 리스트 오른쪽의 상품정보
+    - 후기 보기 클릭 시, 제품후기가 보이고 해당 위치로 이동.  
+        <br />
+    <img width="250" alt="상품 디테일 좋아요-비활성화,활성할" src="https://user-images.githubusercontent.com/100933263/193078479-8cb67b04-a467-4a74-9698-5cbe6531b995.png">
+
+    - like의 state를 false로 하고 onClick 이벤트 시(♡ 아이콘 클릭), setState로 반대 값으로 바꿔주기.
+    - state가 바뀌면 아이콘 이미지 변경 (false: 빈하트 -> true: 꽉찬하트)  
+        <br />
+     <img width="138" alt="가격2" src="https://user-images.githubusercontent.com/100933263/193079731-df4dcef6-5c58-4ccb-b634-5031862f7044.png">
+
+    - 정규식을 사용을 사용하여 가격의 천단위 콤마 추가하여 보여주기.   
+      ```.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')```  
+    
+  #### 5) 상품 리스트 상세정보 카테고리
+  <img width="500" alt="상품 리스트 카테고리" src="https://user-images.githubusercontent.com/100933263/193080985-3a1d8bec-d738-4b51-9632-3ba487a3415b.png">
+
+    - 해당 카테고리 클릭 시 해당 카테고리 글자색과 아래 밑줄색상 검정으로 변경.
+    - 해당 카테고리 클릭 시 해당하는 정보를 아래에 보여주기.
+    
+  #### 6) 상품 리스트 상세정보 카테고리 내용
+  <img width="300" alt="제품정보" src="https://user-images.githubusercontent.com/100933263/193082961-70fa0ec5-7e83-4635-bcdb-96a7d59760a7.png">
+
+    - 제품정보 : 해당 상품 이미지와 정보 보여주기  
+    <br />
+    <img width="300" alt="제품후기" src="https://user-images.githubusercontent.com/100933263/193083168-76af7921-1152-48f5-afbf-ef1a34c3c50e.png">
+
+    - 제품후기 : 해당 상품의 리뷰를 mapping하여 보여주기.
       
     <br />
     
-  ## 6. Nav Page
+  ## 6. Nav Component
   ![nav](https://user-images.githubusercontent.com/100933263/193060019-b437a73c-62e6-45ff-a031-61091398e345.gif)
 
   #### 1) nav 레이아웃
@@ -144,4 +185,26 @@
 
     - 상품 카테고리 정보가 있는 Mock data를, fetch하여 data를 setState로 배열에 담기.
     - 상품 카테고리를 mapping하고, 상품카테고리 mapping한 곳 안에서 상품 서브카테고리를 mapping하여 보여주기.
-    - 상품 카테고리 또는 상품 서브카테고리를 클릭 시 해당 상품디테일 페이지로 이동.
+    - 상품 카테고리 또는 상품 서브카테고리를 클릭 시 해당 상품리스트 페이지로 이동.
+    
+    <br />
+    
+  ## 7. 반응형 구현
+  ![반응형](https://user-images.githubusercontent.com/100933263/193068002-3dbf72c6-f0a8-4a6e-976b-efe1985a5d36.jpg)
+
+    - media-query로 desktop,tablet,mobile에 맞게 반응형 구현
+
+## Technlogies
+
+ <div> 
+<img src="https://img.shields.io/badge/html-E34F26?style=for-the-badge&logo=HTML5&logoColor=white"> 
+<img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white"> 
+<img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black"> 
+<img src="https://img.shields.io/badge/javascript-ffc700?style=for-the-badge&logo=javascript&logoColor=white">
+<img src="https://img.shields.io/badge/styled-components-DB7093?style=for-the-badge&logo=styledcomponents&logoColor=white">
+</div> 
+<br>
+
+## Contact
+
+- ssh30510044@gmail.com, [기술블로그](https://sophie0527.tistory.com/), [깃허브](https://github.com/Sophie0527)
