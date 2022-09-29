@@ -1,10 +1,10 @@
 [
   {
     "id": 1,
-    "category": "베스트",
+    "category": "전체상품",
     "category_meaning": "누구나 좋아하는 인기 제품을 만나 보세요!",
     "img": "https://cdn.pixabay.com/photo/2018/01/30/16/54/herbs-3119132_1280.jpg",
-    "sub_category": ["BEST 50"]
+    "sub_category": ["BEST"]
   },
   {
     "id": 2,
