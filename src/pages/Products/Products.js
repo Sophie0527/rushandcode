@@ -59,6 +59,7 @@ function Products() {
             basicURL={basicURL}
             mainURL={mainURL}
             sortURL={sortURL}
+            products={products}
           />
           <FilterContainer
             navigate={navigate}

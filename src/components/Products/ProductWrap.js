@@ -46,10 +46,10 @@ function ProductWrap(props) {
   const subBestList = products.filter(
     (products) => products.reviews.length > 2
   );
-  const bestList = subCategory === null ? products : subBestList;
+  const AllList = subCategory === null ? products : subBestList;
   if (sort === '추천순') {
-    // bestList.sort(() => Math.random() - 0.5);
-    bestList.sort(function (a, b) {
+    // AllList.sort(() => Math.random() - 0.5);
+    AllList.sort(function (a, b) {
       let x = a.product_name.toLowerCase();
       let y = b.product_name.toLowerCase();
       if (x < y) {
@@ -61,15 +61,15 @@ function ProductWrap(props) {
       return 0;
     });
   } else if (sort === '낮은 가격순') {
-    bestList.sort((a, b) => {
+    AllList.sort((a, b) => {
       return a.price - b.price;
     });
   } else if (sort === '높은 가격순') {
-    bestList.sort((a, b) => {
+    AllList.sort((a, b) => {
       return b.price - a.price;
     });
   } else if (sort === '리뷰많은 순') {
-    bestList.sort((a, b) => {
+    AllList.sort((a, b) => {
       return b.reviews.length - a.reviews.length;
     });
   }
@@ -146,9 +146,9 @@ function ProductWrap(props) {
             </ProductBox>
           );
         })}
-        {mainCategory === '베스트' && (
+        {mainCategory === '전체상품' && (
           <>
-            {bestList.map((product, idx) => {
+            {AllList.map((product, idx) => {
               return (
                 <ProductBox key={idx}>
                   <Link to={`/productDetail/${product.id}`}>
@@ -208,53 +208,55 @@ function ProductWrap(props) {
         )}
       </ProductContainer>
       <PageNation>
-        <Label>
-          페이지당 표시할 게시물 수:&nbsp;
-          <Select
-            type="number"
-            value={limit}
-            onChange={({ target: { value } }) => setLimit(Number(value))}
-          >
-            <option value="8">8</option>
-            <option value="12">12</option>
-            <option value="16">16</option>
-          </Select>
-        </Label>
-        {mainCategory !== '베스트' && mainCategory !== '비건' && (
-          <Footer>
-            <Button
-              onClick={() => {
-                setPage(page - 1);
-                window.scrollTo(0, 500);
-              }}
-              disabled={page === 1}
-            >
-              &lt;
-            </Button>
-            {Array(basicNumPages)
-              .fill()
-              .map((_, i) => (
-                <Button
-                  key={i + 1}
-                  onClick={() => {
-                    setPage(i + 1);
-                    window.scrollTo(0, 500);
-                  }}
-                  aria-current={page === i + 1 ? 'page' : null}
-                >
-                  {i + 1}
-                </Button>
-              ))}
-            <Button
-              onClick={() => {
-                setPage(page + 1);
-                window.scrollTo(0, 500);
-              }}
-              disabled={page === basicNumPages}
-            >
-              &gt;
-            </Button>
-          </Footer>
+        {mainCategory !== '전체상품' && mainCategory !== '비건' && (
+          <>
+            <Label>
+              페이지당 표시할 게시물 수:&nbsp;
+              <Select
+                type="number"
+                value={limit}
+                onChange={({ target: { value } }) => setLimit(Number(value))}
+              >
+                <option value="8">8</option>
+                <option value="12">12</option>
+                <option value="16">16</option>
+              </Select>
+            </Label>
+            <Footer>
+              <Button
+                onClick={() => {
+                  setPage(page - 1);
+                  window.scrollTo(0, 500);
+                }}
+                disabled={page === 1}
+              >
+                &lt;
+              </Button>
+              {Array(basicNumPages)
+                .fill()
+                .map((_, i) => (
+                  <Button
+                    key={i + 1}
+                    onClick={() => {
+                      setPage(i + 1);
+                      window.scrollTo(0, 500);
+                    }}
+                    aria-current={page === i + 1 ? 'page' : null}
+                  >
+                    {i + 1}
+                  </Button>
+                ))}
+              <Button
+                onClick={() => {
+                  setPage(page + 1);
+                  window.scrollTo(0, 500);
+                }}
+                disabled={page === basicNumPages}
+              >
+                &gt;
+              </Button>
+            </Footer>
+          </>
         )}
       </PageNation>
     </Container>

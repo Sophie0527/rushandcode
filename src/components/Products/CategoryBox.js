@@ -11,11 +11,17 @@ function CategoryBox(props) {
     basicURL,
     mainURL,
     sortURL,
+    products,
   } = props;
 
   const subCategoryList = categories
     .filter((categories) => categories.category === mainCategory)
     .map((categories) => categories.sub_category);
+
+  const totalProduct = products.filter(
+    (products) => products.product_main_name === mainCategory
+  );
+  const veganProduct = products.filter((products) => products.vegan === true);
 
   return (
     <Container>
@@ -25,7 +31,15 @@ function CategoryBox(props) {
           navigate(`${basicURL}${mainURL}${sortURL}`);
         }}
       >
-        전체
+        {(() => {
+          if (mainCategory !== '전체상품' && mainCategory !== '비건') {
+            return <>전체({totalProduct.length})</>;
+          } else if (mainCategory === '전체상품') {
+            return <>전체({products.length})</>;
+          } else if (mainCategory === '비건') {
+            return <>전체({veganProduct.length})</>;
+          }
+        })()}
       </Total>
       {subCategoryList.map((category, i) => {
         return (
