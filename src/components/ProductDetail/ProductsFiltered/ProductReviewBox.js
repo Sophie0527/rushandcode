@@ -16,7 +16,7 @@ function ProductReviewBox(props) {
   const reviewList = product.reviews;
   const [reviewState, setReviewState] = useState(reviewList);
 
-  // <댓글 구현하기 1~4>
+  // <리뷰 구현하기 1~6>
   // 1. input창의 입력 값을 setState에 담기
   // 2. 선택하는 별점에 따라 변경 될 수 있도록 state 만들기
   // 3. 추가되야할 필요한 리뷰 정보를 객체로 state 만들기
