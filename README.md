@@ -104,14 +104,19 @@
     - 정규식을 사용을 사용하여 이름의 중간 글자를 *로 변경하여 보여주기.   
       ```.replace(/(?<=.{1})./, '*');```  
         
-  #### 6) BestProductBanner
+  #### 6) BestReviewBanner의 리뷰 글
+  <img width="300" alt="일부 리뷰보여주기" src="https://user-images.githubusercontent.com/100933263/193268841-4c6ef275-ef8c-4b76-9304-be0c48b36f47.png">
+
+    - 리뷰 일부분만 보여주기: substr 함수를 사용하여 44개 글자와 '...'를 보여주기.  
+        
+  #### 7) BestProductBanner
   <img width="500" alt="베스트 상품 베너" src="https://user-images.githubusercontent.com/100933263/193055475-35ebbf80-84af-436c-93cc-a24a402629cb.png">
 
     - 상품 정보가 있는 Mock data를, fetch하여 data를 setState로 배열에 담기.
     - React-Slick 라이브러리를 사용하여 Carousel 구현.
     - 상품리뷰의 갯수가 2개 이상인 상품으로 필터링하고, 필터링된 상품을 mapping하여 보여주기.
 
-  #### 7) BestProductBanner 상품 별 가격
+  #### 8) BestProductBanner 상품 별 가격
   <img width="97" alt="가격" src="https://user-images.githubusercontent.com/100933263/193056265-697a7031-ff30-47e3-9cef-30d9a99ed884.png">
 
     - 정규식을 사용을 사용하여 가격의 천단위 콤마 추가하여 보여주기.   
