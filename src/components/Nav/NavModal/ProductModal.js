@@ -8,7 +8,6 @@ function ProductModal(props) {
   // product의 목데이터를 fetch하여 products 배열에 담기
   const [products, setProducts] = useState([]);
 
-  // let categories = products.map((products) => products.category);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -73,7 +72,6 @@ const Container = styled.div`
   display: flex;
   justify-content: space-between;
   position: relative;
-  /* z-index: 110; */
   ${CustomMediaStyle.lessThan('tablet')`
     display: flex;
     flex-direction: column;
