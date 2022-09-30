@@ -26,7 +26,6 @@ function Nav() {
     if (productOpen === false) {
       setProductOpen(true);
       setIntroduceOpen(false);
-      // setMypageOpen(false);
     } else {
       setProductOpen(false);
     }
@@ -38,7 +37,6 @@ function Nav() {
     if (introduceOpen === false) {
       setIntroduceOpen(true);
       setProductOpen(false);
-      // setMypageOpen(false);
     } else {
       setIntroduceOpen(false);
     }
@@ -54,6 +52,7 @@ function Nav() {
       setIntroduceOpen(false);
     }
   };
+
   // 로고 클릭 시 메인페이지로 이동 (+ window.location.reload() //리랜더링)
   const navigate = useNavigate();
   return (
