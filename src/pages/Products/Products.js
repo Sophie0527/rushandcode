@@ -7,19 +7,21 @@ import CategoryBox from '../../components/Products/CategoryBox';
 import FilterContainer from '../../components/Products/FilterContainer';
 import ProductWrap from '../../components/Products/ProductWrap';
 function Products() {
+  const navigate = useNavigate();
+
+  // url에서 쿼리 가져와서 변수 만들기
   let sch = useLocation().search;
   let query = new URLSearchParams(sch);
   let mainCategory = query.get('mainCategory');
   let subCategory = query.get('subCategory');
   let sort = query.get('sort');
 
-  const navigate = useNavigate();
-
   const basicURL = `/products`;
   const mainURL = `?mainCategory=${mainCategory}`;
   const mainSubURL = `?mainCategory=${mainCategory}&subCategory=${subCategory}`;
   const sortURL = `&sort=${sort}`;
 
+  // 카테고리 목데이터 배열에 담기
   const [categories, setCategories] = useState([]);
   useEffect(() => {
     fetch('http://localhost:3000/data/CategoryData/Products.json', {
@@ -30,7 +32,7 @@ function Products() {
         setCategories(data);
       });
   }, [setCategories]);
-
+  // 상품 목데이터 배열에 담기
   const [products, setProducts] = useState([]);
   useEffect(() => {
     fetch('http://localhost:3000/data/ProductData/Product.json', {
