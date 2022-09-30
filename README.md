@@ -238,13 +238,23 @@
   ## 6. Review Component
   ![리뷰 작성하기](https://user-images.githubusercontent.com/100933263/193333959-23d3cb2e-6bfd-414c-b9d5-37df52939aff.gif)
 
-  #### 1) 댓글 구현하기
+  #### 1) 리뷰 구현하기
     - 1. input창의 입력 값을 setState에 담기
     - 2. 선택하는 별점에 따라 변경 될 수 있도록 state 만들기
     - 3. 추가되야할 필요한 리뷰 정보를 객체로 state 만들기
     - 4. input창에 onChange 이벤트 시, setState(setInputComment)를 입력값으로 바꾸고 newComment에서 content 값을 입력값으로 지정하고 star를 선택되는 별점으로 지정하고 날짜는 현재 날짜로 지정하고 배열 데이터에 id값을 추가해 입력된 객체 만들어 담아두기!
     - 5. 엔터 또는 게시 버튼 클릭 시,newComment에 담아둔 객체를 reviewList에 추가해주고setNewComment로 content의 값과 star의 값을 다시 초기화해주고 setInputComment로 input창의 글도 초기화해주기!
     - 6. 리뷰 input창에 글자가 1자 이상 이라면, 게시버튼 색상변경 및 클릭가능하고 엔터로 등록가능 조건!
+
+  #### 2) 리뷰등록 날짜
+  <img width="400" alt="리뷰 console" src="https://user-images.githubusercontent.com/100933263/193336651-ca4944ae-edf7-4728-95d4-5bc242524d3e.png">
+
+    - 현재 시간을 year-month-day 형태로 보여주기   
+      ```const today = new Date();```  
+      ```const year = today.getFullYear();```  
+      ```const month = ('0' + (today.getMonth() + 1)).slice(-2);```  
+      ```const day = ('0' + today.getDate()).slice(-2);```  
+      ```const dateString = year + '-' + month + '-' + day;``` 
       
     <br />
     
