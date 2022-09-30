@@ -12,8 +12,9 @@
     - 3 . home Page
     - 4 . product list Page
     - 5 . product detail Page
-    - 6 . nav component
-    - 7 . 반응형 구현
+    - 6 . Review Component
+    - 7 . nav component
+    - 8 . 반응형 구현
     
   ## 1. Signup Page
   ![회원가입](https://user-images.githubusercontent.com/100933263/193027929-aeb4593a-4576-4ebb-ad32-d26cba36bb73.gif)
@@ -231,10 +232,23 @@
     <img width="300" alt="제품후기" src="https://user-images.githubusercontent.com/100933263/193083168-76af7921-1152-48f5-afbf-ef1a34c3c50e.png">
 
     - 제품후기 : 해당 상품의 리뷰를 mapping하여 보여주기.
+   
+    <br />
+    
+  ## 6. Review Component
+  ![리뷰 작성하기](https://user-images.githubusercontent.com/100933263/193333959-23d3cb2e-6bfd-414c-b9d5-37df52939aff.gif)
+
+  #### 1) 댓글 구현하기
+    - 1. input창의 입력 값을 setState에 담기
+    - 2. 선택하는 별점에 따라 변경 될 수 있도록 state 만들기
+    - 3. 추가되야할 필요한 리뷰 정보를 객체로 state 만들기
+    - 4. input창에 onChange 이벤트 시, setState(setInputComment)를 입력값으로 바꾸고 newComment에서 content 값을 입력값으로 지정하고 star를 선택되는 별점으로 지정하고 날짜는 현재 날짜로 지정하고 배열 데이터에 id값을 추가해 입력된 객체 만들어 담아두기!
+    - 5. 엔터 또는 게시 버튼 클릭 시,newComment에 담아둔 객체를 reviewList에 추가해주고setNewComment로 content의 값과 star의 값을 다시 초기화해주고 setInputComment로 input창의 글도 초기화해주기!
+    - 6. 리뷰 input창에 글자가 1자 이상 이라면, 게시버튼 색상변경 및 클릭가능하고 엔터로 등록가능 조건!
       
     <br />
     
-  ## 6. Nav Component
+  ## 7. Nav Component
   ![nav](https://user-images.githubusercontent.com/100933263/193060019-b437a73c-62e6-45ff-a031-61091398e345.gif)
 
   #### 1) nav 레이아웃
@@ -255,7 +269,7 @@
     
     <br />
     
-  ## 7. 반응형 구현
+  ## 8. 반응형 구현
   ![반응형](https://user-images.githubusercontent.com/100933263/193068002-3dbf72c6-f0a8-4a6e-976b-efe1985a5d36.jpg)
 
     - media-query로 desktop,tablet,mobile에 맞게 반응형 구현
