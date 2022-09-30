@@ -4,9 +4,8 @@ import Slider from 'react-slick';
 import styled from 'styled-components';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { AiOutlineHeart } from 'react-icons/ai';
-import { AiFillHeart } from 'react-icons/ai';
 import { AiOutlineShopping } from 'react-icons/ai';
+import LikeIcon from './LikeIcon';
 import { CustomMediaStyle } from '../../styles/CustomMediaStyle';
 
 function BestReview() {
@@ -22,16 +21,6 @@ function BestReview() {
       });
   }, [setProducts]);
 
-  const [like, setLike] = useState([false, false, false, false, false]);
-  const tmp = [false, false, false, false, false];
-  const likeBtn = (index) => {
-    if (like[index] === false) {
-      tmp[index] = true;
-      setLike(tmp);
-    }
-    setLike(tmp);
-  };
-
   const settings = {
     dots: true, // 스크롤바 아래 점으로 페이지네이션 여부
     infinite: true, //무한 반복 옵션
@@ -46,49 +35,42 @@ function BestReview() {
     pauseOnHover: false, // 슬라이드 이동	시 마우스 호버하면 슬라이더 멈추게 설정
   };
 
+  // bestReviewList: 상품의 리뷰의 수가 1개 이상이고, 리뷰의 0번째 index의 별이 5개 인 것을 필터링한 데이터
+  const bestReviewList = products.filter(
+    (products) =>
+      products.reviews.length > 0 && products.reviews[0].star === '★★★★★'
+  );
+
   return (
     <Container>
       <StyledSlider {...settings}>
-        {products
-          .filter(
-            (product) =>
-              product.reviews.length > 0 && product.reviews[0].star === '★★★★★'
-          )
-          .map((product, idx) => {
-            return (
-              <Banner key={idx}>
-                <span>{product.reviews[0].star}</span>
-                <ProductName>
-                  <h2>{product.product_name}</h2>
-                  <div>
-                    {like[idx] === false ? (
-                      <AiOutlineHeart size="24" onClick={() => likeBtn(idx)} />
-                    ) : (
-                      <AiFillHeart
-                        size="24"
-                        color="tomato"
-                        onClick={() => likeBtn(idx)}
-                      />
-                    )}
-                    <AiOutlineShopping size="24" />
-                  </div>
-                </ProductName>
-                <Link to={`/productDetail/${product.id}`}>
-                  <img src={product.sub_img} alt={product.product_name} />
-                </Link>
-                <ReviewText>
-                  {product.reviews[0].content.length < 45 ? (
-                    <>{product.reviews[0].content}</>
-                  ) : (
-                    <>{product.reviews[0].content.substr(0, 44) + '...'}</>
-                  )}
-                </ReviewText>
-                <UserName>
-                  {product.reviews[0].user_name.replace(/(?<=.{1})./, '*')}
-                </UserName>
-              </Banner>
-            );
-          })}
+        {bestReviewList.map((product, idx) => {
+          return (
+            <Banner key={idx}>
+              <span>{product.reviews[0].star}</span>
+              <ProductName>
+                <h2>{product.product_name}</h2>
+                <div>
+                  <LikeIcon product={product} />
+                  <AiOutlineShopping size="24" />
+                </div>
+              </ProductName>
+              <Link to={`/productDetail/${product.id}`}>
+                <img src={product.sub_img} alt={product.product_name} />
+              </Link>
+              <ReviewText>
+                {product.reviews[0].content.length < 45 ? (
+                  <>{product.reviews[0].content}</>
+                ) : (
+                  <>{product.reviews[0].content.substr(0, 44) + '...'}</>
+                )}
+              </ReviewText>
+              <UserName>
+                {product.reviews[0].user_name.replace(/(?<=.{1})./, '*')}
+              </UserName>
+            </Banner>
+          );
+        })}
       </StyledSlider>
     </Container>
   );
