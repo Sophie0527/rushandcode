@@ -10,8 +10,8 @@ function Login() {
   });
   const { id, pw } = loginValue;
 
-  // <Id: 영어나 숫자로만 가능한 정규식>
-  const regEmail = /^[a-z|A-Z|0-9|]+$/;
+  // <id: 영어나 숫자로만 가능한 정규식>
+  const eng_or_num = /^[a-z|A-Z|0-9|]+$/;
 
   // <pw: 정규식>
   const num = /[0-9]/g; // 입력한 pw에 숫자가 포함되어 있으면 0이상 숫자 전달됨.
@@ -25,7 +25,7 @@ function Login() {
 
   // <로그인 버튼 클릭 시, 아래의 validation 조건에 맞다면 스타일을 active로 바꾸고, gotohome()가 되도록 함.>
   const validation = (id, pw) => {
-    if (regEmail.test(id) && id?.length >= 4 && isSafe === true) {
+    if (eng_or_num.test(id) && id?.length >= 4 && isSafe === true) {
       return true;
     }
     return false;

@@ -18,7 +18,7 @@ function Contents(props) {
   const { id, pw, checkPw, name } = signupValue;
 
   // <Id: 영어나 숫자로만 가능한 정규식>
-  const regEmail = /^[a-z|A-Z|0-9|]+$/;
+  const eng_or_num = /^[a-z|A-Z|0-9|]+$/;
 
   // <pw: 정규식>
   const num = /[0-9]/g; // 입력한 pw에 숫자가 포함되어 있으면 0이상 숫자 전달됨.
@@ -33,7 +33,7 @@ function Contents(props) {
   // <회원가입 클릭 시, 아래의 validation 조건에 맞다면 success()가 되도록 함.>
   const validation = (id, pw, checkPw, name) => {
     if (
-      regEmail.test(id) &&
+      eng_or_num.test(id) &&
       id?.length >= 4 &&
       isSafe === true &&
       pw === checkPw &&
@@ -67,7 +67,7 @@ function Contents(props) {
   return (
     <>
       <Container>
-        {/*  =============  id  =============  */}
+        {/*  ======  id  ======  */}
         <InfoBox>
           <ImgBox>
             <img src={EssentialImg} alt="필수입력" />
@@ -78,7 +78,7 @@ function Contents(props) {
           <InputBox
             ref={IdBox}
             className={
-              (regEmail.test(id) && id?.length >= 4) || id?.length === 0
+              (eng_or_num.test(id) && id?.length >= 4) || id?.length === 0
                 ? 'blackBox'
                 : 'redBox'
             }
@@ -93,21 +93,21 @@ function Contents(props) {
             ></input>
           </InputBox>
         </InfoBox>
-        {/*  =============  id - valid  =============  */}
+        {/*  ======  id_valid  ======  */}
         <ValidBox>
           {invalidId && <RedText>필수항목입니다.</RedText>}
           {id?.length > 0 && id?.length < 4 && (
             <BlackText>최소 4 이상 입력해주세요.</BlackText>
           )}
-          {id?.length > 0 && id?.length > 3 && !regEmail.test(id) && (
+          {id?.length > 0 && id?.length > 3 && !eng_or_num.test(id) && (
             <BlackText>영어와 숫자로만 입력해주세요.</BlackText>
           )}
-          {id?.length >= 4 && regEmail.test(id) && (
+          {id?.length >= 4 && eng_or_num.test(id) && (
             <GreenText>사용가능한 아이디입니다.</GreenText>
           )}
         </ValidBox>
 
-        {/*  ============= pw =============   */}
+        {/*  ====== pw ======   */}
         <InfoBox>
           <ImgBox>
             <img src={EssentialImg} alt="필수입력" />
@@ -133,7 +133,7 @@ function Contents(props) {
             ></input>
           </InputBox>
         </InfoBox>
-        {/* ============= pw - valid =============  */}
+        {/* ====== pw_valid ======  */}
         <ValidBox>
           {invalidPw && <RedText>필수항목입니다.</RedText>}
           {pw?.length > 0 && pw?.length < 7 && (
@@ -149,7 +149,7 @@ function Contents(props) {
           )}
         </ValidBox>
 
-        {/* ============= pwcheck ============= */}
+        {/* ====== pwcheck ====== */}
         <InfoBox>
           <ImgBox>
             <img src={EssentialImg} alt="필수입력" />
@@ -176,7 +176,7 @@ function Contents(props) {
             ></input>
           </InputBox>
         </InfoBox>
-        {/* ============= pwcheck - valid ============= */}
+        {/* ====== pwcheck_valid ====== */}
         <ValidBox>
           {invalidCheckPw && <RedText>필수항목입니다.</RedText>}
           {checkPw?.length > 0 && pw !== checkPw && (
@@ -185,7 +185,7 @@ function Contents(props) {
           {pw === checkPw && <NoneText />}
         </ValidBox>
 
-        {/* ============= name ============= */}
+        {/* ====== name ====== */}
         <InfoBox>
           <ImgBox>
             <img src={EssentialImg} alt="필수입력" />
@@ -209,12 +209,12 @@ function Contents(props) {
             ></input>
           </InputBox>
         </InfoBox>
-        {/* ============= name - valid ============= */}
+        {/* ====== name_valid ====== */}
         <ValidBox>
           {invalidName && <RedText>필수항목입니다.</RedText>}
           {name?.length >= 1 && <NoneText />}
         </ValidBox>
-        {/* ============ 필수항목이 아닌 것 =============*/}
+        {/* ====== 필수항목이 아닌 것 ====== */}
         <Unnecessary />
       </Container>
       <ContentsFooter>

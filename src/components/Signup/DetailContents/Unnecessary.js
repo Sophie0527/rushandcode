@@ -5,7 +5,7 @@ import { CustomMediaStyle } from '../../../styles/CustomMediaStyle';
 function Unnecessary() {
   return (
     <>
-      {/* ======== nickname ======== */}
+      {/* ====== nickname ====== */}
       <InfoBox>
         <ImgBox></ImgBox>
         <SpanBox>
@@ -15,7 +15,7 @@ function Unnecessary() {
           <input></input>
         </InputBox>
       </InfoBox>
-      {/* ======== email ======== */}
+      {/* ====== email ====== */}
       <InfoBox>
         <ImgBox></ImgBox>
         <SpanBox>
@@ -43,7 +43,7 @@ function Unnecessary() {
           </AgreeBox>
         </InputAgreeBox>
       </InfoBox>
-      {/* ======== phone ======== */}
+      {/* ====== phone ====== */}
       <InfoBox>
         <ImgBox></ImgBox>
         <SpanBox>
@@ -59,7 +59,7 @@ function Unnecessary() {
           </AgreeBox>
         </InputAgreeBox>
       </InfoBox>
-      {/* ======== address ======== */}
+      {/* ====== address ====== */}
       <InfoBox>
         <ImgBox></ImgBox>
         <SpanBox>
