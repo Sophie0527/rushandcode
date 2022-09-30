@@ -5,9 +5,8 @@
 
 ## Introduction
 
-- 개발 기간 | 2022-09-01 ~ 2022-09-08
-- 1차 팀프로젝트로 진행했던 'rush & code'의 모든 컴포넌트를 재구현하기
-  - 구현한 페이지
+- 1차 팀프로젝트로 진행했던 'rush & code'를 다른 팀원들의 구현부분 컴포넌트도 구현해보기.
+  - 구현한 부분
     - 1 . Signup Page
     - 2 . Login Page
     - 3 . home Page
@@ -146,14 +145,11 @@
     - 리뷰많은 순: url(&sort=리뷰많은 순)으로 변경하여 이동하기.
 
   #### 5) 기본 상품 리스트 보여주기 (ex. 배쓰, 샤워 등) 
+  <img width="500" alt="기본리스트보여주기-URL" src="https://user-images.githubusercontent.com/100933263/193185972-cecb7a58-977c-4054-a766-8a14641c9a60.png">
+
     - ① URL에서 mainCategory가 상품 mockdata에서 가져온 product_main_name과 같은 것으로 필터링하기.
     - ② URL에서subCategory가 상품 mockdata에서 가져온 product_sub_name과 같은 것으로 필터링하기.
     - URL에서subCategory가 null이면 ①을 null이 아니면 ②를 mapping하여 보여주기!
-    - 정렬기준
-      - 추천순: URL에서 sort가 추천순이면, 이름순(가나다)으로 정렬.
-      - 낮은 가격순: URL에서 sort가 낮은 가격순이면, 가격이 낮은 순으로 정렬.
-      - 높은 가격순: URL에서 sort가 높은 가격순이면, 가격이 높은 순으로 정렬.
-      - 리뷰많은 순: URL에서 sort가 리뷰많은 순이면, 리뷰가 많은 순으로 정렬.
 
   #### 6) 전체 상품 리스트 보여주기 (ex. 전체상품, _best) 
     - ③ 상품 mockdata에서 가져온 리뷰의 수가 2개 이상 되는 것으로 필터링하기.
@@ -170,14 +166,22 @@
     - 높은 가격순: URL에서 sort가 높은 가격순이면, 가격이 높은 순으로 정렬.
     - 리뷰많은 순: URL에서 sort가 리뷰많은 순이면, 리뷰가 많은 순으로 정렬.
     
-  #### 9) 페이지네이션
+  #### 9) 페이지당 표시할 게시물 수
   <img width="278" alt="상품리스트-최소게시물수" src="https://user-images.githubusercontent.com/100933263/193182675-d2fb6c31-b09f-4277-939b-eea273c6b05f.png">
 
-    - 페이지당 표시할 게시물 수: 최소 표시할 게시물 수를 state로 8로 지정하여 기본 값으로 보여주고 해당 숫자를 클릭하면 setState로 수량을 변경 할 수 있도록 함.  
-            <br />
-    <img width="216" alt="상품리스트-페이지네이션버튼" src="https://user-images.githubusercontent.com/100933263/193183280-597fc465-cecc-47fc-ba5a-123b8ee97e02.png">
+    - 최소 표시할 게시물 수를 state로 8로 지정하여 기본 값으로 보여주고 해당 숫자를 클릭하면 setState로 수량을 변경 할 수 있도록 함.  
     
+  #### 10) 페이지네이션
+  <img width="216" alt="상품리스트-페이지네이션버튼" src="https://user-images.githubusercontent.com/100933263/193183280-597fc465-cecc-47fc-ba5a-123b8ee97e02.png">
+  
     - 페이지네이션 버튼
+      - 좌우 이동 버튼
+        - 좌 버튼: 페이지가 1이면 좌측 버튼 disabled.
+        - 우 버튼: 페이지가 (전체상품 수에서 최소 페이지당 표시할 게시물 수를 나누기한 수)이면 우측 버튼 disabled.
+      - 페이지 버튼
+        - 전체상품 수에서 최소 페이지당 표시할 게시물 수를 나누기. (ex. 전체상품수(24) ➗ 표시할 게시물 수(8))
+        - fill()로 배열의 각자리를 채우기. fill 인자가 없으므로 undefined로 할당됨. (ex. [ undefined, undefined, undefined ])
+        - map()으로 각자리 index에 해당하는 값 할당하기. (ex. [ 1, 2, 3 ])
     
     <br />
     
