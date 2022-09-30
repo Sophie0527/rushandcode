@@ -76,9 +76,13 @@ function ProductFilterBox(props) {
         </div>
       </FilterBox>
 
+      {/* 제품정보 */}
       {info ? <ProductInfoBox product={product} /> : null}
+      {/* 제품후기 */}
       {review ? <ProductReviewBox product={product} /> : null}
+      {/* 배송/반품/교환 안내 */}
       {shipping ? <ProductshippingBox /> : null}
+      {/* 상품필수정보 */}
       {essentialInfo ? <ProductEssentialInfoBox /> : null}
     </>
   );
