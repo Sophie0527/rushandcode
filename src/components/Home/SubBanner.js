@@ -20,7 +20,6 @@ function SubBanner() {
   }, [setProducts]);
 
   const settings = {
-    // dots: true, // 스크롤바 아래 점으로 페이지네이션 여부
     infinite: true, //무한 반복 옵션
     speed: 500, // 다음 버튼 누르고 다음 화면 뜨는데까지 걸리는 시간(ms)
     autoplay: true, // 자동 스크롤 사용 여부
@@ -51,11 +50,12 @@ function SubBanner() {
         <h3>지금 가장 인기있는 제품을 만나보세요!</h3>
         <StyledSlider {...settings}>
           {products
+            // 상품의 리뷰의 수가 3개 이상인 것을 필터링하고 mapping하기
             .filter((product) => product.reviews.length > 2)
             .map((product, idx) => {
               return (
-                <Link to={`/productDetail/${product.id}`}>
-                  <Banner key={idx}>
+                <Link to={`/productDetail/${product.id}`} key={idx}>
+                  <Banner>
                     <img src={product.img} alt={product.product_name} />
                     <ProductInfo>
                       <h4>{product.product_name}</h4>
