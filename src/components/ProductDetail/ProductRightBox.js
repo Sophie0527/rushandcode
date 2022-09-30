@@ -7,7 +7,13 @@ import { CustomMediaStyle } from '../../styles/CustomMediaStyle';
 
 function ProductRightBox(props) {
   const { product, setInfo, setReview, setShipping, setEssentialInfo } = props;
-  const [like, setLike] = useState(false);
+
+  // 상품의 like를 state로 하고, 하트아이콘 클릭 시 setState로 변경하기!
+  const [isLike, setIsLike] = useState(product.like);
+  const likeBtn = () => {
+    setIsLike(!isLike);
+  };
+
   return (
     <RightBox>
       <ProductInfoBox>
@@ -44,12 +50,12 @@ function ProductRightBox(props) {
           </h1>
         </TotalPrice>
         <BuyBox>
-          {!like ? (
-            <ButtonBox onClick={() => setLike(true)}>
+          {!isLike ? (
+            <ButtonBox onClick={likeBtn}>
               <AiOutlineHeart />
             </ButtonBox>
           ) : (
-            <ButtonBox onClick={() => setLike(false)}>
+            <ButtonBox onClick={likeBtn}>
               <AiFillHeart />
             </ButtonBox>
           )}

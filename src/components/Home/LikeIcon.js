@@ -5,7 +5,7 @@ import { AiOutlineHeart } from 'react-icons/ai';
 import { AiFillHeart } from 'react-icons/ai';
 
 function LikeIcon({ product }) {
-  // 상품 리뷰의 like를 state로 하고, 하트아이콘 클릭 시 setState로 변경하기!
+  // 상품의 like를 state로 하고, 하트아이콘 클릭 시 setState로 변경하기!
   const [isLike, setIsLike] = useState(product.like);
   const likeBtn = () => {
     setIsLike(!isLike);

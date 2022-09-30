@@ -5,6 +5,7 @@ import { CustomMediaStyle } from '../../styles/CustomMediaStyle';
 function ProductLeftBox(props) {
   const { product } = props;
 
+  // 메인이미지 변경을 위한 state
   const [subImg, setSubImg] = useState(true);
 
   return (
