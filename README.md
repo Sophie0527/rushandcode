@@ -145,6 +145,40 @@
     - 높은 가격순: url(&sort=높은 가격순)으로 변경하여 이동하기.
     - 리뷰많은 순: url(&sort=리뷰많은 순)으로 변경하여 이동하기.
 
+  #### 5) 기본 상품 리스트 보여주기 (ex. 배쓰, 샤워 등) 
+    - ① URL에서 mainCategory가 상품 mockdata에서 가져온 product_main_name과 같은 것으로 필터링하기.
+    - ② URL에서subCategory가 상품 mockdata에서 가져온 product_sub_name과 같은 것으로 필터링하기.
+    - URL에서subCategory가 null이면 ①을 null이 아니면 ②를 mapping하여 보여주기!
+    - 정렬기준
+      - 추천순: URL에서 sort가 추천순이면, 이름순(가나다)으로 정렬.
+      - 낮은 가격순: URL에서 sort가 낮은 가격순이면, 가격이 낮은 순으로 정렬.
+      - 높은 가격순: URL에서 sort가 높은 가격순이면, 가격이 높은 순으로 정렬.
+      - 리뷰많은 순: URL에서 sort가 리뷰많은 순이면, 리뷰가 많은 순으로 정렬.
+
+  #### 6) 전체 상품 리스트 보여주기 (ex. 전체상품, _best) 
+    - ③ 상품 mockdata에서 가져온 리뷰의 수가 2개 이상 되는 것으로 필터링하기.
+    - URL에서subCategory가 null이면 기본 상품리스트를 null이 아니면 ③을 mapping하여 보여주기!
+    
+  #### 7) 비건 상품 리스트 보여주기 (ex. 비건) 
+    - ④ 상품 mockdata에서 가져온 vegan이 true인 것으로 필터링하기.
+    - ⑤ URL에서subCategory가 상품 mockdata에서 가져온 product_main_name과 같은 것이고 vegan이 true인 것으로 필터링하기.
+    - URL에서subCategory가 null이면 ④를 null이 아니면 ⑤를 mapping하여 보여주기!
+    
+  #### 8) 상품 리스트 정렬기준
+    - 추천순: URL에서 sort가 추천순이면, 이름순(가나다)으로 정렬.
+    - 낮은 가격순: URL에서 sort가 낮은 가격순이면, 가격이 낮은 순으로 정렬.
+    - 높은 가격순: URL에서 sort가 높은 가격순이면, 가격이 높은 순으로 정렬.
+    - 리뷰많은 순: URL에서 sort가 리뷰많은 순이면, 리뷰가 많은 순으로 정렬.
+    
+  #### 9) 페이지네이션
+  <img width="278" alt="상품리스트-최소게시물수" src="https://user-images.githubusercontent.com/100933263/193182675-d2fb6c31-b09f-4277-939b-eea273c6b05f.png">
+
+    - 페이지당 표시할 게시물 수: 최소 표시할 게시물 수를 state로 8로 지정하여 기본 값으로 보여주고 해당 숫자를 클릭하면 setState로 수량을 변경 할 수 있도록 함.  
+            <br />
+    <img width="216" alt="상품리스트-페이지네이션버튼" src="https://user-images.githubusercontent.com/100933263/193183280-597fc465-cecc-47fc-ba5a-123b8ee97e02.png">
+    
+    - 페이지네이션 버튼
+    
     <br />
     
   ## 5. product detail Page
