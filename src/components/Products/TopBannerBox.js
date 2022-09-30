@@ -7,6 +7,8 @@ function TopBannerBox(props) {
 
   return (
     <>
+      {/* url의 query에서 mainCategory가 카테고리와 같은 것으로 필터링하고, 필터링된 카테고리 데이터를 mapping하여 보여주기. */}
+      {/* url의 query에서 subCategory가 null이면 mainCategory 정보를 보여주고, null이 아니면 subCategory 정보 보여주기. */}
       {categories
         .filter((category) => mainCategory === category.category)
         .map((category, idx) => {

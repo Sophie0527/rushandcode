@@ -6,6 +6,7 @@ function FilterContainer(props) {
   const { navigate, subCategory, basicURL, mainURL, mainSubURL, sort } = props;
   const [filterOpen, setFilterOpen] = useState(false);
 
+  // 필터박스 클릭 시 메뉴박스 생성 또는 숨기기
   const openFilterBox = () => {
     if (!filterOpen) {
       setFilterOpen(true);
@@ -13,7 +14,7 @@ function FilterContainer(props) {
       setFilterOpen(false);
     }
   };
-
+  // 해당 필터메뉴 클릭 시 메뉴박스 숨기기
   const closeFilterBox = () => {
     if (filterOpen) {
       setFilterOpen(false);
@@ -31,6 +32,7 @@ function FilterContainer(props) {
       </FilterBox>
       {filterOpen ? (
         <Filter onClick={closeFilterBox}>
+          {/* url의 query에서 subCategory가 null일 경우 mainURL(?mainCategory=${mainCategory})로 하고 이동. */}
           {subCategory === null && (
             <>
               <span
@@ -63,6 +65,7 @@ function FilterContainer(props) {
               </span>
             </>
           )}
+          {/* url의 query에서 subCategory가 null이 아닐 경우 mainSubURL(?mainCategory=${mainCategory}&subCategory=${subCategory})로 하고 이동. */}
           {subCategory && (
             <>
               <span

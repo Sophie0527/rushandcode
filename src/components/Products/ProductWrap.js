@@ -6,17 +6,19 @@ import { CustomMediaStyle } from '../../styles/CustomMediaStyle';
 function ProductWrap(props) {
   const { products, mainCategory, subCategory, sort } = props;
 
-  // 메인제품에 따른 필터링
+  // ①메인제품에 따른 필터링
   const mainProductList = products.filter(
     (products) => products.product_main_name === mainCategory
   );
-  // 서브제품에 따른 필터링
+  // ②서브제품에 따른 필터링
   const subProductList = products.filter(
     (products) => products.product_sub_name === subCategory
   );
+  // url의 query에서 subCategory가 null 이면 ① null이 아니면 ②
   const productList = subCategory === null ? mainProductList : subProductList;
+  // <정렬조건>
+  // 추천순: 이름순 / 낮은가격순: 가격순 / 높은가격순: 가격역순 /리뷰많은 순: 리뷰수가 많은 순
   if (sort === '추천순') {
-    // productList.sort(() => Math.random() - 0.5);
     productList.sort(function (a, b) {
       let x = a.product_name.toLowerCase();
       let y = b.product_name.toLowerCase();
@@ -42,13 +44,15 @@ function ProductWrap(props) {
     });
   }
 
-  // 서브best제품에 따른 필터링
+  // ③ 상품 mockdata에서 가져온 리뷰의 수가 2개 이상 되는 것으로 필터링하기.
   const subBestList = products.filter(
     (products) => products.reviews.length > 2
   );
+  // URL에서subCategory가 null이면 기본 상품리스트를 null이 아니면 ③을 mapping하여 보여주기!
   const AllList = subCategory === null ? products : subBestList;
+  // <정렬조건>
+  // 추천순: 이름순 / 낮은가격순: 가격순 / 높은가격순: 가격역순 /리뷰많은 순: 리뷰수가 많은 순
   if (sort === '추천순') {
-    // AllList.sort(() => Math.random() - 0.5);
     AllList.sort(function (a, b) {
       let x = a.product_name.toLowerCase();
       let y = b.product_name.toLowerCase();
@@ -74,16 +78,18 @@ function ProductWrap(props) {
     });
   }
 
-  // 메인vegan제품에 따른 필터링
+  // ④ 상품 mockdata에서 가져온 vegan이 true인 것으로 필터링하기.
   const mainVeganList = products.filter((products) => products.vegan === true);
-  // 서브vegan제품에 따른 필터링
+  // ⑤ URL에서subCategory가 상품 mockdata에서 가져온 product_main_name과 같은 것이고 vegan이 true인 것으로 필터링하기.
   const subVeganList = products.filter(
     (products) =>
       products.product_main_name === subCategory && products.vegan === true
   );
+  // URL에서subCategory가 null이면 ④를 null이 아니면 ⑤를 mapping하여 보여주기!
   const veganList = subCategory === null ? mainVeganList : subVeganList;
+  // <정렬조건>
+  // 추천순: 이름순 / 낮은가격순: 가격순 / 높은가격순: 가격역순 /리뷰많은 순: 리뷰수가 많은 순
   if (sort === '추천순') {
-    // veganList.sort(() => Math.random() - 0.5);
     veganList.sort(function (a, b) {
       let x = a.product_name.toLowerCase();
       let y = b.product_name.toLowerCase();
@@ -113,7 +119,6 @@ function ProductWrap(props) {
   const [limit, setLimit] = useState(8);
   const [page, setPage] = useState(1);
   const offset = (page - 1) * limit;
-
   const totalProductList = productList.length;
   const basicNumPages = Math.ceil(totalProductList / limit);
 
@@ -210,6 +215,8 @@ function ProductWrap(props) {
       <PageNation>
         {mainCategory !== '전체상품' && mainCategory !== '비건' && (
           <>
+            {/* 최소 표시할 게시물 수를 state로 8로 지정하여 기본 값으로 보여주고 
+            해당 숫자를 클릭하면 setState로 수량을 변경 할 수 있도록 함. */}
             <Label>
               페이지당 표시할 게시물 수:&nbsp;
               <Select
@@ -222,6 +229,7 @@ function ProductWrap(props) {
                 <option value="16">16</option>
               </Select>
             </Label>
+
             <Footer>
               <Button
                 onClick={() => {
@@ -232,6 +240,9 @@ function ProductWrap(props) {
               >
                 &lt;
               </Button>
+              {/* 전체상품 수에서 최소 페이지당 표시할 게시물 수를 나누기. (ex. 전체상품수(24) ➗ 표시할 게시물 수(8)) */}
+              {/* fill()로 배열의 각자리를 채우기. fill 인자가 없으므로 undefined로 할당됨. (ex. [ undefined, undefined, undefined ]) */}
+              {/* map()으로 각자리 index에 해당하는 값 할당하기. (ex. [ 1, 2, 3 ]) */}
               {Array(basicNumPages)
                 .fill()
                 .map((_, i) => (

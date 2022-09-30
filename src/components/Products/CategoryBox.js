@@ -14,14 +14,17 @@ function CategoryBox(props) {
     products,
   } = props;
 
-  const subCategoryList = categories
-    .filter((categories) => categories.category === mainCategory)
-    .map((categories) => categories.sub_category);
-
+  // url의 query에서 mainCategory가 상품의 product_main_name과 같은 것으로 필터링.
   const totalProduct = products.filter(
     (products) => products.product_main_name === mainCategory
   );
+  // 상품의 비건이 true인 것으로 필터링.
   const veganProduct = products.filter((products) => products.vegan === true);
+
+  // url의 query에서 mainCategory가 카테고리와 같은 것으로 필터링하고, 필터링된 카테고리 데이터의 sub_category를 mapping하여 보여주기.
+  const subCategoryList = categories
+    .filter((categories) => categories.category === mainCategory)
+    .map((categories) => categories.sub_category);
 
   return (
     <Container>
@@ -41,6 +44,7 @@ function CategoryBox(props) {
           }
         })()}
       </Total>
+
       {subCategoryList.map((category, i) => {
         return (
           <SubTextWrap key={i}>
